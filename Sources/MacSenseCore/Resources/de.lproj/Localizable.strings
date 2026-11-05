@@ -548,3 +548,19 @@
 "Отключить запуск" = "Start deaktivieren";
 
 "macOS не разрешила изменить состояние агента." = "macOS hat die Änderung des Agentenstatus nicht erlaubt.";
+
+"Недоступные папки: %@" = "Nicht zugängliche Ordner: %@";
+
+"Чип" = "Chip";
+
+"Загрузочный диск" = "Startvolume";
+
+"Давление памяти" = "Speicherdruck";
+
+"Чтение" = "Lesen";
+
+"Запись" = "Schreiben";
+
+"Да" = "Ja";
+
+"Нет" = "Nein";

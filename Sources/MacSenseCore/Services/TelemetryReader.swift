@@ -13,6 +13,9 @@ public actor TelemetryReader {
 
     public func hardware() -> HardwareInfo {
         var h = HardwareInfo()
+        var reportedOS: String?
+        h.startupDisk = try? URL(fileURLWithPath: "/").resourceValues(forKeys: [.volumeNameKey]).volumeName
+        h.displayDiagonal = HardwareDetails.builtInDisplayDiagonal()
         h.computerName = Host.current().localizedName
         h.batteryDetails = HardwareDetails.battery()
         h.gpuDevices = HardwareDetails.graphics()
@@ -26,8 +29,9 @@ public actor TelemetryReader {
         #else
         h.architecture = "Intel · x86_64"
         #endif
-        if let data = SystemCommand.data("/usr/sbin/system_profiler", ["SPHardwareDataType", "SPDisplaysDataType", "SPNVMeDataType", "-json"], timeout: 20),
+        if let data = SystemCommand.data("/usr/sbin/system_profiler", ["SPHardwareDataType", "SPDisplaysDataType", "SPNVMeDataType", "SPSoftwareDataType", "-json"], timeout: 20),
            let root = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] {
+            reportedOS = (root["SPSoftwareDataType"] as? [[String: Any]])?.first?["os_version"] as? String
             if let item = (root["SPHardwareDataType"] as? [[String: Any]])?.first {
                 h.modelName = item["machine_name"] as? String ?? h.model
                 h.serial = item["serial_number"] as? String
@@ -48,6 +52,7 @@ public actor TelemetryReader {
         if h.graphics == "Графический процессор" { h.graphics = h.chip }
         let version = ProcessInfo.processInfo.operatingSystemVersion
         h.os = "macOS \(version.majorVersion).\(version.minorVersion).\(version.patchVersion) (\(sysString("kern.osversion") ?? "—"))"
+        h.os = reportedOS ?? h.os
         return h
     }
 

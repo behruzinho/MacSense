@@ -34,7 +34,7 @@ struct MonitorView: View {
                     Button(L("Восстановить панели")) { encoded = MonitorConfiguration.defaultEncoded }
                 }.padding(.top, 12)
             }
-            LazyVGrid(columns: combined ? [GridItem(.flexible())] : [GridItem(.adaptive(minimum: 320))], alignment: .leading, spacing: 16) {
+            LazyVGrid(columns: combined ? [GridItem(.flexible())] : [GridItem(.adaptive(minimum: 320), alignment: .top)], alignment: .leading, spacing: 16) {
                 ForEach(configuration.panels) { panel in MonitorPanelView(panel: panel) }
             }
             if configuration.panels.isEmpty { InfoNote(text: L("Выберите панели в настройках выше.")) }

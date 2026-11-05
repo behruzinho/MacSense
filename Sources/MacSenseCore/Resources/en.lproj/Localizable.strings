@@ -548,3 +548,19 @@
 "Отключить запуск" = "Disable launch";
 
 "macOS не разрешила изменить состояние агента." = "macOS did not allow changing the agent’s state.";
+
+"Недоступные папки: %@" = "Inaccessible folders: %@";
+
+"Чип" = "Chip";
+
+"Загрузочный диск" = "Startup disk";
+
+"Давление памяти" = "Memory pressure";
+
+"Чтение" = "Read";
+
+"Запись" = "Write";
+
+"Да" = "Yes";
+
+"Нет" = "No";

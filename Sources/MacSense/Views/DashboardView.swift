@@ -26,33 +26,7 @@ struct DashboardView: View {
             }
         }
     }
-    private var deviceBanner: some View {
-        HStack(spacing: 25) {
-            LaptopIllustration().frame(width: 105, height: 82)
-            VStack(alignment: .leading, spacing: 7) {
-                Text(monitor.hardware.modelName).font(.system(size: 21, weight: .semibold))
-                Text("\(monitor.hardware.chip)  ·  \(monitor.hardware.os)").font(.system(size: 11)).foregroundStyle(.secondary)
-                HStack(spacing: 7) {
-                    tag(L("\(monitor.hardware.coreCount) ядер CPU"))
-                    tag(Fmt.bytes(monitor.hardware.memory) + L(" памяти"))
-                    tag(monitor.hardware.model)
-                }.padding(.top, 5)
-            }
-            Spacer(minLength: 0)
-            VStack(alignment: .trailing, spacing: 7) {
-                Image(systemName: s.thermalState == 0 ? "checkmark.shield" : "thermometer.medium")
-                    .font(.system(size: 25, weight: .light)).foregroundStyle(s.thermalState == 0 ? Palette.green : Palette.orange)
-                Text(s.thermalState == 0 ? L("Температурный режим\nв норме") : L("Повышенная\nтепловая нагрузка"))
-                    .font(.system(size: 10)).foregroundStyle(.secondary).multilineTextAlignment(.trailing)
-            }
-        }.padding(24).frame(maxWidth: .infinity, alignment: .leading)
-            .background(LinearGradient(colors: [Palette.card, Palette.blue.opacity(0.07)], startPoint: .leading, endPoint: .trailing), in: RoundedRectangle(cornerRadius: 14))
-            .overlay(RoundedRectangle(cornerRadius: 14).stroke(Palette.border))
-    }
-    private func tag(_ title: String) -> some View {
-        Text(title).font(.system(size: 9, weight: .medium)).foregroundStyle(.secondary)
-            .padding(.horizontal, 8).padding(.vertical, 4).background(Color.primary.opacity(0.04), in: RoundedRectangle(cornerRadius: 4))
-    }
+    private var deviceBanner: some View { DeviceSummaryCard() }
     private var batteryCard: some View {
         MetricCard(title: L("Батарея"), icon: "battery.75percent", tint: Palette.green) {
             if s.battery.present {

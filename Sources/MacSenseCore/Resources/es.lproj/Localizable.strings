@@ -548,3 +548,19 @@
 "Отключить запуск" = "Desactivar inicio";
 
 "macOS не разрешила изменить состояние агента." = "macOS no permitió cambiar el estado del agente.";
+
+"Недоступные папки: %@" = "Carpetas inaccesibles: %@";
+
+"Чип" = "Chip";
+
+"Загрузочный диск" = "Disco de arranque";
+
+"Давление памяти" = "Presión de memoria";
+
+"Чтение" = "Lectura";
+
+"Запись" = "Escritura";
+
+"Да" = "Sí";
+
+"Нет" = "No";

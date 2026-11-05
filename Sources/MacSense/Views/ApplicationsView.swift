@@ -6,6 +6,7 @@ struct ApplicationsView: View {
     @State private var selectedApp: String?
     @State private var selectedFiles: Set<String> = []
     @State private var query = ""
+    @State private var issues: [String] = []
     @State private var scanning = false
     @State private var progress = ScanProgress(completed: 0, total: 0, current: "")
     @State private var scanTask: Task<Void, Never>?
@@ -26,6 +27,10 @@ struct ApplicationsView: View {
                 Text(L("\(apps.count) приложений")).font(.system(size: 11)).foregroundStyle(.secondary)
                 Spacer()
                 Button(L("Сканировать"), systemImage: "arrow.clockwise", action: startScan).disabled(scanning || deleting)
+            }
+            if !allFiles.isEmpty && !scanning {
+                SelectionBar(files: allFiles, blocked: deleting || runningSelection, cancel: { selectedFiles = [] }, confirm: { confirmTrash = true })
+                if runningSelection { Text(L("Сначала завершите приложение, чтобы переместить его файлы в Корзину.")).font(.system(size: 10)).foregroundStyle(Palette.orange) }
             }
             if scanning {
                 ScanProgressCard(progress: progress) { scanTask?.cancel() }
@@ -60,15 +65,8 @@ struct ApplicationsView: View {
                     }.frame(maxWidth: .infinity)
                 }
             }
+            ScanIssuesView(paths: issues)
             InfoNote(text: L("Связанные файлы определяются по точному идентификатору приложения. Общие папки разработчика и неизвестные остатки не включаются. Размер с символом ≥ подсчитан частично. Удаление выполняется только после выбора и подтверждения."))
-        }
-        .safeAreaInset(edge: .bottom) {
-            if !allFiles.isEmpty && !scanning {
-                SelectionBar(files: allFiles, blocked: deleting || runningSelection, cancel: { selectedFiles = [] }, confirm: { confirmTrash = true })
-                    .overlay(alignment: .topLeading) {
-                        if runningSelection { Text(L("Сначала завершите приложение, чтобы переместить его файлы в Корзину.")).font(.system(size: 10)).foregroundStyle(Palette.orange).offset(y: -18) }
-                    }
-            }
         }
         .onAppear { if apps.isEmpty { startScan() } }
         .onDisappear { scanTask?.cancel() }
@@ -81,6 +79,7 @@ struct ApplicationsView: View {
         guard !scanning else { return }; scanning = true
         scanTask = Task {
             let result = await service.applications { value in await MainActor.run { progress = value } }
+            issues = await service.scanIssues()
             if !Task.isCancelled { apps = result; selectedFiles = []; selectedApp = result.first?.id }
             scanning = false
         }
@@ -185,5 +184,16 @@ struct SelectionBar: View {
             Button(L("Отмена"), action: cancel)
             Button(L("В Корзину…"), systemImage: "trash", role: .destructive, action: confirm).disabled(blocked)
         }.padding(16).background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12)).padding(.horizontal, 12).padding(.bottom, 10)
+    }
+}
+
+struct ScanIssuesView: View {
+    let paths: [String]
+    var body: some View {
+        if !paths.isEmpty {
+            DisclosureGroup(L("Недоступные папки: \(paths.count)")) {
+                ForEach(paths, id: \.self) { path in Text(path).font(.system(size: 10, design: .monospaced)).foregroundStyle(.secondary).textSelection(.enabled) }
+            }
+        }
     }
 }

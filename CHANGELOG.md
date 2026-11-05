@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.2.0 — review build, unreleased
+
+- Preserved the existing dashboard design; added startup disk, chip, memory, OS/build and masked serial to the Mac banner.
+- Physical disks and APFS hierarchy, read/write history, bounded cancellable disk benchmark.
+- Optional detailed NVMe SMART via separately installed smartctl; no fabricated SSD health readings.
+- Battery metadata and Metal capabilities with correct unified-memory labels.
+- Grouped app-related files, exact-ID containers/scripts, total sizes and batch selection.
+- Categorized cleanup for developer data and downloads, progress/cancellation and read-only system/simulator categories.
+- Configurable monitor panels, ordering, single-column layout and selectable menu bar metric.
+- Actual launchd state, confirmed user-agent permissions and MacSense launch at login.
+- Five-language localization and parser, file-policy, cancellation and configuration tests.
+
+Manual review and Apple notarization remain pending before publication.
+
 ## 0.1.0 — 2026-11-05
 
 First public preview.

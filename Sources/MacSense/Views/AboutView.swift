@@ -31,7 +31,7 @@ struct AboutView: View {
                 .frame(width: 94, height: 94).background(Palette.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 23))
             VStack(spacing: 7) {
                 Text("MacSense").font(.system(size: 28, weight: .semibold))
-                Text(L("Монитор вашего Mac · версия 0.1.0")).font(.system(size: 11)).foregroundStyle(.secondary)
+                Text(L("Версия \(AppInfo.version)")).font(.system(size: 11)).foregroundStyle(.secondary)
             }
             Link(L("Создано behruzinho"), destination: URL(string: "https://github.com/behruzinho")!).font(.system(size: 15, weight: .medium))
             Divider()

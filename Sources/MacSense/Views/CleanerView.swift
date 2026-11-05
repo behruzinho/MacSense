@@ -5,6 +5,7 @@ struct CleanerView: View {
     @State private var files: [FileCandidate] = []
     @State private var selected: Set<String> = []
     @State private var category: String?
+    @State private var issues: [String] = []
     @State private var scanning = false
     @State private var scanned = false
     @State private var progress = ScanProgress(completed: 0, total: 0, current: "")
@@ -27,13 +28,14 @@ struct CleanerView: View {
                 HStack(spacing: 25) {
                     Image(systemName: "externaldrive.badge.magnifyingglass").font(.system(size: 45, weight: .ultraLight)).foregroundStyle(Palette.orange)
                     VStack(alignment: .leading, spacing: 8) {
-                        Text(scanned ? Fmt.bytes(files.reduce(0) { $0 + $1.bytes }) : L("Освободите место на Mac")).font(.system(size: 28, weight: .semibold, design: .rounded))
+                        Text(scanned ? (files.allSatisfy(\.complete) ? "" : "≥ ") + Fmt.bytes(files.reduce(0) { $0 + $1.bytes }) : L("Освободите место на Mac")).font(.system(size: 28, weight: .semibold, design: .rounded))
                         Text(L("Просмотрите файлы и выберите, что переместить в Корзину.")).font(.system(size: 11)).foregroundStyle(.secondary)
                     }
                     Spacer()
                     Button(scanned ? L("Сканировать снова") : L("Сканировать"), action: startScan).buttonStyle(.borderedProminent).disabled(scanning || deleting)
                 }.padding(.vertical, 14)
             }
+            if !chosen.isEmpty && !scanning { SelectionBar(files: chosen, blocked: deleting, cancel: { selected = [] }, confirm: { confirmTrash = true }) }
             if scanning { ScanProgressCard(progress: progress) { scanTask?.cancel() } }
             else if scanned {
                 HStack(alignment: .top, spacing: 16) {
@@ -65,9 +67,9 @@ struct CleanerView: View {
                     }
                 }
             }
+            ScanIssuesView(paths: issues)
             InfoNote(text: L("Размеры с ≥ неполные, в том числе при ограничениях доступа macOS. Крупные файлы от 500 МБ ищутся в Загрузках. Симуляторы и системные журналы доступны только для просмотра. Закройте Xcode и соответствующие приложения перед очисткой."))
         }
-        .safeAreaInset(edge: .bottom) { if !chosen.isEmpty && !scanning { SelectionBar(files: chosen, blocked: deleting, cancel: { selected = [] }, confirm: { confirmTrash = true }) } }
         .onDisappear { scanTask?.cancel() }
         .confirmationDialog(L("Переместить выбранные файлы в Корзину?"), isPresented: $confirmTrash, titleVisibility: .visible) {
             Button(L("Переместить \(chosen.count) объектов"), role: .destructive) { Task { await trash() } }
@@ -78,6 +80,7 @@ struct CleanerView: View {
         guard !scanning else { return }; scanning = true
         scanTask = Task {
             let result = await service.cleanerFiles { value in await MainActor.run { progress = value } }
+            issues = await service.scanIssues()
             if !Task.isCancelled { files = result; selected = []; scanned = true; category = categories.first }
             scanning = false
         }

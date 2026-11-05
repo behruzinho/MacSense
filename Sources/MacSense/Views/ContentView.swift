@@ -143,7 +143,7 @@ struct ContentView: View {
             Circle().fill(monitor.ready ? Palette.green : .secondary).frame(width: 4, height: 4)
             Text(monitor.ready ? L("Обновлено в \(Fmt.time(monitor.snapshot.date))") : L("Подключение к системе…"))
             Spacer()
-            Text("\(monitor.hardware.architecture)  ·  MacSense 0.1")
+            Text("\(monitor.hardware.architecture)  ·  MacSense \(AppInfo.version)")
         }.font(.system(size: 9)).foregroundStyle(.tertiary).padding(.horizontal, 28).frame(height: 29)
     }
     @ViewBuilder private var page: some View {

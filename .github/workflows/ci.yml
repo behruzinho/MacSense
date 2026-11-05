@@ -16,6 +16,8 @@ jobs:
       - uses: actions/checkout@v7
         with:
           persist-credentials: false
+      - name: Check localization template coverage
+        run: python3 script/check_localizations.py
       - name: Test telemetry, file policy, and localizations
         run: swift test
       - name: Build app bundle

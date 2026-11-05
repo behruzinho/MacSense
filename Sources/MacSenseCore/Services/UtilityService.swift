@@ -2,10 +2,13 @@ import Foundation
 
 public actor UtilityService {
     private let fm = FileManager.default
+    private var issues: [String] = []
+    public func scanIssues() -> [String] { issues }
     private let home: URL
     public init(home: URL = FileManager.default.homeDirectoryForCurrentUser) { self.home = home }
 
     public func applications(progress: (@Sendable (ScanProgress) async -> Void)? = nil) async -> [InstalledApplication] {
+        issues = []
         let urls = applicationURLs()
         var apps: [InstalledApplication] = []
         for (index, url) in urls.enumerated() {
@@ -57,6 +60,7 @@ public actor UtilityService {
         return items
     }
     public func cleanerFiles(progress: (@Sendable (ScanProgress) async -> Void)? = nil) async -> [FileCandidate] {
+        issues = []
         let library = home.appendingPathComponent("Library")
         let roots: [(URL, String, Bool)] = [
             (library.appendingPathComponent("Caches"), "Кэш", false), (library.appendingPathComponent("Logs"), "Журналы", false),
@@ -75,7 +79,13 @@ public actor UtilityService {
             if Task.isCancelled { break }
             let (parent, category, readOnly) = entry
             await progress?(ScanProgress(completed: index, total: roots.count, current: category))
-            let children = (try? fm.contentsOfDirectory(at: parent, includingPropertiesForKeys: [.isSymbolicLinkKey], options: [.skipsHiddenFiles])) ?? []
+            let children: [URL]
+            do { children = try fm.contentsOfDirectory(at: parent, includingPropertiesForKeys: [.isSymbolicLinkKey], options: [.skipsHiddenFiles]) }
+            catch {
+                let error = error as NSError
+                if error.domain != NSCocoaErrorDomain || ![NSFileNoSuchFileError, NSFileReadNoSuchFileError].contains(error.code) { issues.append(parent.path) }
+                continue
+            }
             for url in children {
                 if Task.isCancelled { break }
                 guard url == url.resolvingSymlinksInPath() else { continue }

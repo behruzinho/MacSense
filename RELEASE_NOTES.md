@@ -1,29 +1,18 @@
-MacSense 0.1.0 — first public preview
+MacSense 0.2.0 — review build (not published)
 
-A native macOS system monitor by [behruzinho](https://github.com/behruzinho).
+By [behruzinho](https://github.com/behruzinho). macOS 14+, Apple Silicon arm64.
 
-### Downloads
+- Existing dashboard styling with expanded Mac details and hidden serial numbers.
+- Physical disks/APFS, live I/O, cancellable scratch-file benchmark.
+- Grouped and batch application removal; additional cleanup categories with progress/cancellation.
+- Configurable monitoring panels and menu bar metric.
+- launchd state and reviewed user-agent controls; launch MacSense at login.
+- Battery and Metal details; Russian, English, Simplified Chinese, Spanish and German.
 
-- **DMG**: open it and drag MacSense.app into Applications.
-- **ZIP**: the same app as a compressed archive.
-- **SHA256SUMS**: checksums for verifying the downloads.
+Detailed NVMe SMART uses an optional, separately installed smartctl with device-read permission. System services, simulator deletion, custom TRIM drivers and manual fan control are not included. Unavailable readings remain unavailable.
 
-**Requirements:** macOS 14+ and an Apple Silicon Mac (arm64).
+Files move to Trash only after selection and confirmation. No automatic cleanup runs. Serial numbers are excluded from reports.
 
-**Signing:** Developer ID Application signed with hardened runtime and a secure timestamp. Apple notarization is pending; the final verification status will be updated before download publication. Keep Gatekeeper enabled.
+Distribution status: Developer ID signing is supported. Apple notarization and manual review are required before this candidate is published. Do not describe this build as notarized until accepted tickets have been stapled and verified.
 
-### Included
-
-CPU and per-core usage; RAM and swap; GPU; battery health, cycles and power; storage; network traffic; SMC temperatures and fan RPM; application and cache scanners; startup configuration viewer; menu bar monitor; themes and text report export.
-
-Languages: Russian, English, Simplified Chinese, Spanish, German.
-
-Files are moved to Trash only after selection and confirmation. macOS retains control of cooling; this version does not change TRIM or run a privileged helper. Some hardware metrics may be unavailable on particular Mac models.
-
-Coffee support is prepared but remains inactive until the author connects a real support page.
-
-License: MIT.
-
----
-
-Первый публичный предварительный выпуск MacSense. Требуется macOS 14+ и Apple Silicon. Скачайте DMG, откройте его и перетащите MacSense.app в «Программы». ZIP содержит то же приложение. Сборка подписана Developer ID Application; проверка Apple пока ожидается.
+Manual review: [Russian checklist](docs/TESTING.ru.md). License: MIT.

@@ -14,7 +14,7 @@ struct SettingsView: View {
                     Image(systemName: "waveform.path.ecg").font(.system(size: 30)).foregroundStyle(Palette.blue)
                     VStack(alignment: .leading, spacing: 4) {
                         Text("MacSense").font(.system(size: 20, weight: .semibold))
-                        Text(L("Монитор вашего Mac · версия 0.1.0")).font(.system(size: 11)).foregroundStyle(.secondary)
+                        Text(L("Версия \(AppInfo.version)")).font(.system(size: 11)).foregroundStyle(.secondary)
                     }
                 }.padding(.vertical, 8)
             }

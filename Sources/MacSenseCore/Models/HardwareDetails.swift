@@ -1,6 +1,7 @@
 import Foundation
 import IOKit
 import Metal
+import CoreGraphics
 
 public struct BatteryDetails: Sendable {
     public var manufacturer: String?
@@ -29,6 +30,17 @@ public struct GPUDeviceInfo: Identifiable, Sendable {
     public let families: [String]
 }
 public enum HardwareDetails {
+    public static func builtInDisplayDiagonal() -> Double? {
+        var displays = [CGDirectDisplayID](repeating: 0, count: 16), count: UInt32 = 0
+        guard CGGetActiveDisplayList(16, &displays, &count) == .success,
+              let display = displays.prefix(Int(count)).first(where: { CGDisplayIsBuiltin($0) != 0 }) else { return nil }
+        let mm = CGDisplayScreenSize(display)
+        guard mm.width > 0, mm.height > 0 else { return nil }
+        let inches = hypot(mm.width, mm.height) / 25.4
+        // Core Graphics may estimate dimensions without EDID. Present it as approximate,
+        // and suppress implausible notebook values rather than guessing a model variant.
+        return (10...20).contains(inches) ? inches : nil
+    }
     public static func battery() -> BatteryDetails {
         var result = BatteryDetails()
         let service = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching("AppleSmartBattery"))

@@ -51,3 +51,8 @@ enum Fmt {
         return hours >= 24 ? L("\(hours / 24) д \(hours % 24) ч") : L("\(hours) ч \(Int(seconds) % 3600 / 60) мин")
     }
 }
+
+
+enum AppInfo {
+    static var version: String { Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "Development" }
+}

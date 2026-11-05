@@ -94,6 +94,8 @@ public struct DiskReading: Identifiable, Sendable {
     public var percentage: Double { total > 0 ? used / total * 100 : 0 }
 }
 public struct HardwareInfo: Sendable {
+    public var startupDisk: String?
+    public var displayDiagonal: Double?
     public var computerName: String?
     public var serial: String?
     public var batteryDetails = BatteryDetails()
