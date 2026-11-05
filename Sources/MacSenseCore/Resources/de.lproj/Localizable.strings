@@ -310,3 +310,43 @@
 "найдено в доступных папках кэша и журналов" = "in zugänglichen Cache- und Protokollordnern gefunden";
 "оборотов в минуту" = "Umdrehungen pro Minute";
 "от проектной ёмкости" = "der Designkapazität";
+
+"Контейнеры" = "Container";
+
+"Скрипты приложений" = "App-Skripte";
+
+"Архивы Xcode" = "Xcode-Archive";
+
+"Поддержка устройств" = "Geräteunterstützung";
+
+"Симуляторы" = "Simulatoren";
+
+"Загрузки" = "Downloads";
+
+"Крупные файлы" = "Große Dateien";
+
+"Образы дисков" = "Festplatten-Images";
+
+"Установщики" = "Installationspakete";
+
+"Вложения почты" = "Mail-Downloads";
+
+"Системные журналы" = "Systemprotokolle";
+
+"Частично" = "Teilweise ausgewählt";
+
+"Не выбрано" = "Nicht ausgewählt";
+
+"Только просмотр" = "Nur anzeigen";
+
+"Отмена" = "Abbrechen";
+
+"Выберите категорию" = "Kategorie auswählen";
+
+"Кэш, данные разработчика, загрузки и другие категории для просмотра." = "Caches, Entwicklerdaten, Downloads und weitere Kategorien prüfen.";
+
+"Здесь могут быть личные файлы и архивы сборок. Они не являются мусором: выбирайте только ненужные объекты." = "Hier können persönliche Dateien und Build-Archive liegen. Nur nicht mehr benötigte Objekte auswählen.";
+
+"Размеры с ≥ неполные, в том числе при ограничениях доступа macOS. Крупные файлы от 500 МБ ищутся в Загрузках. Симуляторы и системные журналы доступны только для просмотра. Закройте Xcode и соответствующие приложения перед очисткой." = "Mit ≥ markierte Größen sind unvollständig, auch bei eingeschränktem macOS-Zugriff. Dateien ab 500 MB werden in Downloads gesucht. Simulatoren und Systemprotokolle sind nur lesbar. Xcode und betroffene Apps vor der Bereinigung schließen.";
+
+"Общий размер: %@. Выбранные данные и настройки также будут перемещены в Корзину." = "Gesamtgröße: %@. Ausgewählte Daten und Einstellungen werden ebenfalls in den Papierkorb verschoben.";

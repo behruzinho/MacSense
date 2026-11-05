@@ -310,3 +310,43 @@
 "найдено в доступных папках кэша и журналов" = "encontrados en carpetas de caché y registros accesibles";
 "оборотов в минуту" = "revoluciones por minuto";
 "от проектной ёмкости" = "de la capacidad de diseño";
+
+"Контейнеры" = "Contenedores";
+
+"Скрипты приложений" = "Scripts de aplicaciones";
+
+"Архивы Xcode" = "Archivos de Xcode";
+
+"Поддержка устройств" = "Soporte de dispositivos";
+
+"Симуляторы" = "Simuladores";
+
+"Загрузки" = "Descargas";
+
+"Крупные файлы" = "Archivos grandes";
+
+"Образы дисков" = "Imágenes de disco";
+
+"Установщики" = "Paquetes de instalación";
+
+"Вложения почты" = "Descargas de correo";
+
+"Системные журналы" = "Registros del sistema";
+
+"Частично" = "Selección parcial";
+
+"Не выбрано" = "Sin seleccionar";
+
+"Только просмотр" = "Solo lectura";
+
+"Отмена" = "Cancelar";
+
+"Выберите категорию" = "Elige una categoría";
+
+"Кэш, данные разработчика, загрузки и другие категории для просмотра." = "Revisa cachés, datos de desarrollo, descargas y otras categorías.";
+
+"Здесь могут быть личные файлы и архивы сборок. Они не являются мусором: выбирайте только ненужные объекты." = "Puede haber archivos personales y compilaciones. Selecciona solo lo que ya no necesites.";
+
+"Размеры с ≥ неполные, в том числе при ограничениях доступа macOS. Крупные файлы от 500 МБ ищутся в Загрузках. Симуляторы и системные журналы доступны только для просмотра. Закройте Xcode и соответствующие приложения перед очисткой." = "Los tamaños con ≥ están incompletos, también por permisos de macOS. Se buscan archivos de 500 MB o más en Descargas. Los simuladores y registros del sistema son de solo lectura. Cierra Xcode y las apps relacionadas antes de limpiar.";
+
+"Общий размер: %@. Выбранные данные и настройки также будут перемещены в Корзину." = "Tamaño total: %@. Los datos y ajustes seleccionados también se moverán a la Papelera.";

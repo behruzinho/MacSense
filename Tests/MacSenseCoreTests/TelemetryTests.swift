@@ -53,6 +53,6 @@ final class TelemetryTests: XCTestCase {
         XCTAssertFalse(UtilityPolicy.isAllowed(item("Library"), home: home))
         XCTAssertFalse(UtilityPolicy.isAllowed(item("Library/Caches"), home: home))
         XCTAssertTrue(UtilityPolicy.isAllowed(item("Library/Caches/com.example.MacSensePolicyTest"), home: home))
-        XCTAssertTrue(UtilityPolicy.isAllowed(item("Library/Preferences/com.example.MacSensePolicyTest.plist"), home: home))
+        XCTAssertTrue(UtilityPolicy.isAllowed(item("Library/Preferences/com.example.MacSensePolicyTest.plist", category: "Настройки"), home: home))
     }
 }

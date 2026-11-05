@@ -310,3 +310,43 @@
 "найдено в доступных папках кэша и журналов" = "found in accessible cache and log folders";
 "оборотов в минуту" = "revolutions per minute";
 "от проектной ёмкости" = "of design capacity";
+
+"Контейнеры" = "Containers";
+
+"Скрипты приложений" = "Application scripts";
+
+"Архивы Xcode" = "Xcode archives";
+
+"Поддержка устройств" = "Device support";
+
+"Симуляторы" = "Simulators";
+
+"Загрузки" = "Downloads";
+
+"Крупные файлы" = "Large files";
+
+"Образы дисков" = "Disk images";
+
+"Установщики" = "Installer packages";
+
+"Вложения почты" = "Mail downloads";
+
+"Системные журналы" = "System logs";
+
+"Частично" = "Partially selected";
+
+"Не выбрано" = "Not selected";
+
+"Только просмотр" = "View only";
+
+"Отмена" = "Cancel";
+
+"Выберите категорию" = "Choose a category";
+
+"Кэш, данные разработчика, загрузки и другие категории для просмотра." = "Review caches, developer data, downloads and other categories.";
+
+"Здесь могут быть личные файлы и архивы сборок. Они не являются мусором: выбирайте только ненужные объекты." = "These may be personal files and build archives. Select only items you no longer need.";
+
+"Размеры с ≥ неполные, в том числе при ограничениях доступа macOS. Крупные файлы от 500 МБ ищутся в Загрузках. Симуляторы и системные журналы доступны только для просмотра. Закройте Xcode и соответствующие приложения перед очисткой." = "Sizes marked ≥ are incomplete, including when macOS restricts access. Large files of 500 MB or more are found in Downloads. Simulators and system logs are view only. Close Xcode and related apps before cleaning.";
+
+"Общий размер: %@. Выбранные данные и настройки также будут перемещены в Корзину." = "Total size: %@. Selected data and settings will also be moved to the Trash.";
