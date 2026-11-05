@@ -16,5 +16,5 @@ First public preview.
 
 ### Distribution
 
-Initial download: Apple Silicon (arm64), macOS 14+. Ad-hoc signed and not Apple-notarized.
+Initial download: Apple Silicon (arm64), macOS 14+. Developer ID signing and Apple notarization scripts are included; see the release notes for the download’s verification status.
 Intel builds can be made from source; no Intel binary is included in this release.

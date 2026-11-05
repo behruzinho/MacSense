@@ -10,7 +10,7 @@ A native macOS system monitor by [behruzinho](https://github.com/behruzinho).
 
 **Requirements:** macOS 14+ and an Apple Silicon Mac (arm64).
 
-**Signing:** ad-hoc signed, not Apple-notarized. macOS may block first launch. Review [Apple’s instructions for an app you trust](https://support.apple.com/102445); keep Gatekeeper enabled.
+**Signing:** Developer ID Application signed with hardened runtime and a secure timestamp. Apple notarization is pending; the final verification status will be updated before download publication. Keep Gatekeeper enabled.
 
 ### Included
 
@@ -26,4 +26,4 @@ License: MIT.
 
 ---
 
-Первый публичный предварительный выпуск MacSense. Требуется macOS 14+ и Apple Silicon. Скачайте DMG, откройте его и перетащите MacSense.app в «Программы». ZIP содержит то же приложение. Сборка пока без Apple notarization.
+Первый публичный предварительный выпуск MacSense. Требуется macOS 14+ и Apple Silicon. Скачайте DMG, откройте его и перетащите MacSense.app в «Программы». ZIP содержит то же приложение. Сборка подписана Developer ID Application; проверка Apple пока ожидается.

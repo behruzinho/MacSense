@@ -23,7 +23,7 @@ Download **MacSense-0.1.0-arm64.dmg** from [Releases](https://github.com/behruzi
 
 **Requirements:** macOS 14 or newer. The initial binary is for **Apple Silicon (arm64)**. Intel users can build from source; this release does not include a tested Intel binary.
 
-**First public preview:** the app is ad-hoc signed and **not notarized by Apple**. macOS may block its first launch. Review [Apple’s guidance for opening an app you trust](https://support.apple.com/102445); keep Gatekeeper enabled. Developer ID signing and notarization are planned for a future release.
+**First public preview:** release packaging supports Developer ID signing and Apple notarization. The signing and notarization status of each download is stated in its release notes. Keep Gatekeeper enabled; see [Apple’s guidance](https://support.apple.com/102445) if macOS reports a launch restriction.
 
 ## Features
 
@@ -69,7 +69,7 @@ Directory-size scans have a time limit; **≥** indicates a partial size. Some p
 - macOS controls fan speeds. Manual fan control and changing TRIM settings are not included.
 - The startup screen shows discovered configuration files, not the live enabled state of every service.
 - The process list contains up to 80 processes sorted by CPU activity; memory is RSS. It is not a complete Activity Monitor replacement.
-- Disk benchmarking, privileged helpers, automatic updates, and Apple notarization are not included in this preview.
+- Disk benchmarking, privileged helpers, and automatic updates are not included in this preview.
 
 ## Build from source
 
@@ -108,7 +108,20 @@ MACSENSE_SUPPORT_URL='https://your-verified-support-page.example' ./script/packa
 
 A real HTTPS support URL enables the coffee button. It is written to `MacSenseSupportURL` in the generated Info.plist. The app contains no payment credentials or embedded checkout. Until a page is configured, the button remains disabled.
 
-If a Developer ID certificate is available, `MACSENSE_SIGN_IDENTITY` selects it and enables hardened runtime signing. Notarization and stapling must be completed separately before claiming an Apple-notarized release.
+If a Developer ID Application certificate and its private key are available, `MACSENSE_SIGN_IDENTITY` selects that identity and enables hardened runtime signing with a secure timestamp:
+
+```sh
+MACSENSE_SIGN_IDENTITY='your Developer ID Application identity' ./script/package_release.sh
+```
+
+Configure notarization once in your own terminal. The setup script prompts for your Apple ID and an app-specific password and stores credentials in Keychain; never add them to the repository:
+
+```sh
+./script/configure_notary.sh MacSense-Notary
+./script/notarize_release.sh MacSense-Notary
+```
+
+The notarization script submits the signed app, staples its accepted ticket, rebuilds the packages, submits and staples the DMG, validates the tickets, and updates checksums. Do not rebuild or re-sign the app afterward without notarizing the new build. Without a Developer ID identity, local builds use an ad-hoc signature.
 
 ## Project layout
 

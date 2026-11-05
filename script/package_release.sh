@@ -7,7 +7,9 @@ RELEASE_DIR="$ROOT_DIR/dist/releases"
 APP_BUNDLE="$ROOT_DIR/dist/MacSense.app"
 BASE_NAME="MacSense-$APP_VERSION-$ARCH"
 
-CONFIGURATION=release "$ROOT_DIR/script/build_and_run.sh" --build
+if [ "${1:-}" != "--from-app" ]; then
+    CONFIGURATION=release "$ROOT_DIR/script/build_and_run.sh" --build
+fi
 codesign --verify --deep --strict "$APP_BUNDLE"
 mkdir -p "$RELEASE_DIR"
 STAGING_DIR="$(mktemp -d "$ROOT_DIR/.build/package.XXXXXX")"
@@ -21,9 +23,8 @@ MacSense
 Drag MacSense.app into Applications, then open it from Applications.
 Requirements: macOS 14 or newer. Check the download's architecture label.
 
-This preview is ad-hoc signed and has not been notarized by Apple.
-macOS may block the first launch. Keep Gatekeeper enabled; see Apple's
-instructions for reviewing and opening an app you trust:
+The release page states the signing and notarization status of this build.
+Keep Gatekeeper enabled. Apple explains how to review an app you trust:
 https://support.apple.com/102445
 
 Author: https://github.com/behruzinho
