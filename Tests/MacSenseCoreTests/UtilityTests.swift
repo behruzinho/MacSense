@@ -2,7 +2,17 @@ import XCTest
 @testable import MacSenseCore
 
 final class UtilityTests: XCTestCase {
-    private let home = FileManager.default.homeDirectoryForCurrentUser
+    private var home: URL!
+    override func setUpWithError() throws {
+        home = FileManager.default.temporaryDirectory.appendingPathComponent("MacSense-policy-" + UUID().uuidString).resolvingSymlinksInPath()
+        for path in ["Library/Containers", "Library/Group Containers", "Library/Caches", "Library/Preferences", "Library/Developer/Xcode/DerivedData", "Library/Developer/CoreSimulator/Devices", "Downloads", "Downloads-other", "Applications/Tools", "Applications/Main.app/Contents"] {
+            try FileManager.default.createDirectory(at: home.appendingPathComponent(path), withIntermediateDirectories: true)
+        }
+    }
+    override func tearDownWithError() throws {
+        if let home { try FileManager.default.removeItem(at: home) }
+        home = nil
+    }
     private func file(_ path: String, _ category: String, reviewOnly: Bool = false) -> FileCandidate {
         FileCandidate(url: home.appendingPathComponent(path), title: path, category: category, bytes: 10, complete: true, reviewOnly: reviewOnly)
     }
