@@ -18,6 +18,8 @@ final class MonitorStore: ObservableObject {
     @Published var uploadHistory: [MetricPoint] = []
     @Published var temperatureHistory: [String: [MetricPoint]] = [:]
     @Published var fanHistory: [Int: [MetricPoint]] = [:]
+    @Published var diskReadHistory: [String: [MetricPoint]] = [:]
+    @Published var diskWriteHistory: [String: [MetricPoint]] = [:]
     @Published var batteryHistory: [MetricPoint] = []
     @Published var paused = false
     @Published var ready = false
@@ -53,6 +55,14 @@ final class MonitorStore: ObservableObject {
         if let download = sample.network.download { append(download, to: &downloadHistory, date: sample.date) }
         if let upload = sample.network.upload { append(upload, to: &uploadHistory, date: sample.date) }
         if sample.battery.present { append(sample.battery.percentage, to: &batteryHistory, date: sample.date) }
+        for io in sample.diskIO {
+            if let value = io.readRate {
+                var points = diskReadHistory[io.id] ?? []; append(value, to: &points, date: sample.date); diskReadHistory[io.id] = points
+            }
+            if let value = io.writeRate {
+                var points = diskWriteHistory[io.id] ?? []; append(value, to: &points, date: sample.date); diskWriteHistory[io.id] = points
+            }
+        }
         for sensor in sample.temperatures {
             var history = temperatureHistory[sensor.id] ?? []
             append(sensor.value, to: &history, date: sample.date)

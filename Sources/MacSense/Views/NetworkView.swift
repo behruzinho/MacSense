@@ -43,6 +43,7 @@ struct GraphicsView: View {
                 }
                 Sparkline(points: monitor.gpuHistory, tint: Palette.cyan, height: 150)
             }
+            MetalInformationView()
             InfoNote(text: L("Загрузка GPU читается из статистики IOAccelerator. Доступность зависит от модели Mac и версии macOS. На системах с несколькими GPU здесь показана наибольшая из доступных загрузок."))
         }
     }

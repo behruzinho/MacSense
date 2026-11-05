@@ -350,3 +350,147 @@
 "Размеры с ≥ неполные, в том числе при ограничениях доступа macOS. Крупные файлы от 500 МБ ищутся в Загрузках. Симуляторы и системные журналы доступны только для просмотра. Закройте Xcode и соответствующие приложения перед очисткой." = "Sizes marked ≥ are incomplete, including when macOS restricts access. Large files of 500 MB or more are found in Downloads. Simulators and system logs are view only. Close Xcode and related apps before cleaning.";
 
 "Общий размер: %@. Выбранные данные и настройки также будут перемещены в Корзину." = "Total size: %@. Selected data and settings will also be moved to the Trash.";
+
+"Плата" = "Logic board";
+
+"Корпус" = "Enclosure";
+
+"Об этом Mac" = "About this Mac";
+
+"Имя компьютера" = "Computer name";
+
+"Идентификатор модели" = "Model identifier";
+
+"Серийный номер" = "Serial number";
+
+"Показать номер" = "Reveal number";
+
+"Скрыть номер" = "Hide number";
+
+"Серийные номера скрыты и не включаются в экспорт отчёта." = "Serial numbers are hidden and excluded from exported reports.";
+
+"Информация о батарее" = "Battery information";
+
+"Производитель" = "Manufacturer";
+
+"Дата производства" = "Manufacture date";
+
+"Проектное число циклов" = "Design cycle count";
+
+"Число ячеек" = "Cell count";
+
+"Архитектура памяти" = "Memory architecture";
+
+"Единая память" = "Unified memory";
+
+"Выделенная память" = "Dedicated memory";
+
+"Общая память Mac" = "Total Mac memory";
+
+"Рекомендуемый бюджет Metal" = "Recommended Metal budget";
+
+"Семейства Metal" = "Metal families";
+
+"На Apple Silicon CPU и GPU используют общую память. Бюджет Metal — рекомендация для приложения, а не объём выделенной VRAM или её текущая загрузка." = "On Apple Silicon, CPU and GPU share memory. The Metal budget is a per-app recommendation, not dedicated VRAM capacity or current usage.";
+
+"Физические диски, APFS, состояние и производительность." = "Physical drives, APFS, health and performance.";
+
+"Раздел" = "Section";
+
+"Информация" = "Information";
+
+"Статистика" = "Statistics";
+
+"Тест скорости" = "Speed test";
+
+"Подключённые тома" = "Mounted volumes";
+
+"Интерфейс" = "Interface";
+
+"Расположение" = "Location";
+
+"Встроенный" = "Internal";
+
+"Внешний" = "External";
+
+"Тип" = "Type";
+
+"Размер блока" = "Block size";
+
+"Съёмный" = "Removable";
+
+"Запись разрешена" = "Writable";
+
+"Разделы и контейнеры APFS" = "Partitions and APFS containers";
+
+"Том APFS" = "APFS volume";
+
+"Контейнер APFS" = "APFS container";
+
+"Размер тома APFS — занятые данные; размер контейнера — общая ёмкость. Эти значения не складываются." = "APFS volume size is data in use; container size is shared capacity. These values are not additive.";
+
+"Состояние накопителя" = "Drive health";
+
+"Оценка оставшегося ресурса" = "Estimated remaining endurance";
+
+"Проверка SMART" = "SMART check";
+
+"Пройдена" = "Passed";
+
+"Есть предупреждения" = "Warnings reported";
+
+"Источник: установленный smartctl. Ресурс рассчитан как 100 − Percentage Used и не является гарантией срока службы." = "Source: installed smartctl. Endurance is estimated as 100 − Percentage Used and does not guarantee drive lifetime.";
+
+"Подробные NVMe SMART доступны через установленный smartctl при разрешённом чтении устройства. Встроенный источник macOS сообщает только общий статус. Отсутствующие значения не заменяются нулями." = "Detailed NVMe SMART requires installed smartctl and permission to read the device. The built-in macOS source provides overall status only. Missing values are not replaced with zeros.";
+
+"Ввод-вывод" = "Input/output";
+
+"Прочитано с подключения" = "Read since connection";
+
+"Записано с подключения" = "Written since connection";
+
+"Счётчики IOBlockStorageDriver относятся к текущему подключению устройства, а не ко всему сроку службы SSD." = "IOBlockStorageDriver counters cover the current device connection, not the entire SSD lifetime.";
+
+"Тестируется диск выбранной папки. Записывается и читается один временный файл; кэш файлов отключён. Файл удаляется после завершения или отмены." = "Tests the drive containing the chosen folder. One temporary file is written and read with file caching disabled, then removed on completion or cancellation.";
+
+"Выбрать папку…" = "Choose folder…";
+
+"Размер теста" = "Test size";
+
+"Начать тест" = "Start test";
+
+"Тест отменён. Временный файл удалён." = "Test cancelled. Temporary file removed.";
+
+"Тест уже выполняется" = "A test is already running";
+
+"Размер теста должен быть от 4 до 1024 МБ" = "Test size must be between 4 and 1024 MB";
+
+"Выберите доступную папку на нужном диске" = "Choose an accessible folder on the target drive";
+
+"Недостаточно свободного места для временного файла" = "Not enough free space for the temporary file";
+
+"Критическое предупреждение" = "Critical warning";
+
+"Доступный резерв" = "Available spare";
+
+"Израсходованный ресурс" = "Percentage used";
+
+"Прочитано за срок службы" = "Lifetime data read";
+
+"Записано за срок службы" = "Lifetime data written";
+
+"Команды чтения" = "Host read commands";
+
+"Команды записи" = "Host write commands";
+
+"Время занятости контроллера" = "Controller busy time";
+
+"Включения" = "Power cycles";
+
+"Часы работы" = "Power-on hours";
+
+"Небезопасные отключения" = "Unsafe shutdowns";
+
+"Ошибки целостности данных" = "Media and data integrity errors";
+
+"Записи журнала ошибок" = "Error log entries";

@@ -38,6 +38,7 @@ struct BatteryView: View {
                     DetailRow(title: L("Сила тока"), value: battery.amperage.map { String(format: L("%.0f мА"), locale: L10n.locale, $0) } ?? "—")
                     DetailRow(title: L("Мощность батареи"), value: powerText)
                 }
+                BatteryInformationView()
                 InfoNote(text: L("Здоровье аккумулятора рассчитано по полной и проектной ёмкости из IOKit. Оно может немного отличаться от оценки macOS. Положительный ток означает заряд, отрицательный — разряд."))
             } else {
                 MetricCard(title: L("Питание"), icon: "powerplug", tint: Palette.green) {

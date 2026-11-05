@@ -49,6 +49,10 @@ public struct TemperatureReading: Identifiable, Sendable {
         if key.hasPrefix("TB") || key.hasPrefix("Tb") { return "Батарея" }
         if key.hasPrefix("TM") || key.hasPrefix("Tm") { return "Память" }
         if key.hasPrefix("TH") || key.hasPrefix("TN") { return "Накопитель" }
+        if key.hasPrefix("TW") { return "Wi-Fi" }
+        if key.hasPrefix("TL") { return "Плата" }
+        if key.hasPrefix("TP") { return "Питание" }
+        if key.hasPrefix("Ts") { return "Корпус" }
         return "Система"
     }
     public var name: String {
@@ -90,6 +94,10 @@ public struct DiskReading: Identifiable, Sendable {
     public var percentage: Double { total > 0 ? used / total * 100 : 0 }
 }
 public struct HardwareInfo: Sendable {
+    public var computerName: String?
+    public var serial: String?
+    public var batteryDetails = BatteryDetails()
+    public var gpuDevices: [GPUDeviceInfo] = []
     public var model = "Mac"
     public var modelName = "Ваш Mac"
     public var chip = "Процессор Mac"
@@ -117,6 +125,7 @@ public struct SystemSnapshot: Sendable {
     public var fans: [FanReading] = []
     public var processes: [ProcessReading] = []
     public var disks: [DiskReading] = []
+    public var diskIO: [DiskIOReading] = []
     public var thermalState = 0
     public var uptime: TimeInterval = 0
     public var cpuTemperature: Double? {

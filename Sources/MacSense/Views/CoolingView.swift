@@ -4,7 +4,7 @@ import MacSenseCore
 struct CoolingView: View {
     @EnvironmentObject private var monitor: MonitorStore
     @State private var query = ""
-    private let groups = ["Процессор", "Графика", "Память", "Накопитель", "Батарея", "Система"]
+    private var groups: [String] { Array(Set(monitor.snapshot.temperatures.map(\.group))).sorted() }
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             PageHeading(eyebrow: L("Оборудование / Температура"), title: L("Охлаждение"), description: L("Обороты вентиляторов и доступные температурные датчики вашего Mac."))

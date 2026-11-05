@@ -1,16 +1,21 @@
 import Foundation
 import TelemetryBridge
+import Metal
 
 public actor TelemetryReader {
     private var previousTicks: [[UInt64]] = []
     private var previousNetwork: (received: Double, sent: Double, time: Double)?
     private var processes: [ProcessReading] = []
     private var disks: [DiskReading] = []
+    private var previousDiskIO: [String: (read: Double, written: Double, time: Double)] = [:]
     private var tick = 0
     public init() {}
 
     public func hardware() -> HardwareInfo {
         var h = HardwareInfo()
+        h.computerName = Host.current().localizedName
+        h.batteryDetails = HardwareDetails.battery()
+        h.gpuDevices = HardwareDetails.graphics()
         h.model = sysString("hw.model") ?? "Mac"
         h.chip = sysString("machdep.cpu.brand_string") ?? "Apple Silicon"
         h.coreCount = max(1, Int(ms_sysctl_uint("hw.logicalcpu")))
@@ -25,6 +30,7 @@ public actor TelemetryReader {
            let root = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] {
             if let item = (root["SPHardwareDataType"] as? [[String: Any]])?.first {
                 h.modelName = item["machine_name"] as? String ?? h.model
+                h.serial = item["serial_number"] as? String
                 h.chip = item["chip_type"] as? String ?? h.chip
             }
             if let gpu = (root["SPDisplaysDataType"] as? [[String: Any]])?.first {
@@ -41,7 +47,7 @@ public actor TelemetryReader {
         if h.modelName == "Ваш Mac" { h.modelName = h.model }
         if h.graphics == "Графический процессор" { h.graphics = h.chip }
         let version = ProcessInfo.processInfo.operatingSystemVersion
-        h.os = "macOS \(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
+        h.os = "macOS \(version.majorVersion).\(version.minorVersion).\(version.patchVersion) (\(sysString("kern.osversion") ?? "—"))"
         return h
     }
 
@@ -105,6 +111,18 @@ public actor TelemetryReader {
             }
             previousNetwork = (received, sent, now)
         }
+        var io = [MSDiskIO](repeating: MSDiskIO(), count: 64)
+        let ioCount = Int(ms_disk_io(&io, Int32(io.count)))
+        snapshot.diskIO = io.prefix(ioCount).map { item in
+            var name = item.name
+            let id = withUnsafePointer(to: &name) { $0.withMemoryRebound(to: CChar.self, capacity: 64) { String(cString: $0) } }
+            let read = Double(item.read), written = Double(item.written)
+            let old = previousDiskIO[id]
+            previousDiskIO[id] = (read, written, now)
+            return DiskIOReading(id: id, read: read, written: written,
+                readRate: old.flatMap { MetricMath.rate(previous: $0.read, current: read, seconds: now - $0.time) },
+                writeRate: old.flatMap { MetricMath.rate(previous: $0.written, current: written, seconds: now - $0.time) })
+        }
         var temperatures = [MSTemperature](repeating: MSTemperature(), count: 512)
         let count = Int(ms_temperatures(&temperatures, Int32(temperatures.count)))
         snapshot.temperatures = temperatures.prefix(count).map { item in
@@ -133,7 +151,7 @@ public actor TelemetryReader {
             guard parts.count == 4, let pid = Int(parts[0]), let cpu = Double(parts[1]), let rss = Double(parts[2]) else { return nil }
             let name = URL(fileURLWithPath: String(parts[3])).lastPathComponent
             return ProcessReading(id: pid, name: name, cpu: cpu, memory: rss * 1024)
-        }.sorted { $0.cpu > $1.cpu }.prefix(80).map { $0 }
+        }.sorted { $0.cpu > $1.cpu }
     }
     private func readDisks() -> [DiskReading] {
         let keys: Set<URLResourceKey> = [.volumeNameKey, .volumeTotalCapacityKey, .volumeAvailableCapacityKey, .volumeLocalizedFormatDescriptionKey, .volumeIsInternalKey]

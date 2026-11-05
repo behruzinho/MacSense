@@ -236,3 +236,23 @@ int ms_fans(MSFan *output, int capacity) {
     }
     return result;
 }
+
+// Read-only counters supplied by IOBlockStorageDriver, mapped to BSD media names.
+int ms_disk_io(MSDiskIO *output, int capacity) {
+    io_iterator_t iterator = 0;
+    if (IOServiceGetMatchingServices(kIOMainPortDefault, IOServiceMatching("IOBlockStorageDriver"), &iterator) != KERN_SUCCESS) return 0;
+    int count = 0; io_service_t service;
+    while ((service = IOIteratorNext(iterator))) {
+        CFTypeRef stats = IORegistryEntryCreateCFProperty(service, CFSTR("Statistics"), kCFAllocatorDefault, 0);
+        CFTypeRef name = IORegistryEntrySearchCFProperty(service, kIOServicePlane, CFSTR("BSD Name"), kCFAllocatorDefault, kIORegistryIterateRecursively);
+        if (count < capacity && stats && name && CFGetTypeID(stats) == CFDictionaryGetTypeID() && CFGetTypeID(name) == CFStringGetTypeID()) {
+            double read = number((CFDictionaryRef)stats, CFSTR("Bytes (Read)"), -1);
+            double written = number((CFDictionaryRef)stats, CFSTR("Bytes (Write)"), -1);
+            if (read >= 0 && written >= 0 && CFStringGetCString((CFStringRef)name, output[count].name, sizeof(output[count].name), kCFStringEncodingUTF8)) {
+                output[count].read = (uint64_t)read; output[count].written = (uint64_t)written; count++;
+            }
+        }
+        if (stats) CFRelease(stats); if (name) CFRelease(name); IOObjectRelease(service);
+    }
+    IOObjectRelease(iterator); return count;
+}

@@ -76,6 +76,7 @@ enum Diagnostics {
             _ = await reader.sample()
             try? await Task.sleep(for: .seconds(1))
             let sample = await reader.sample()
+            let inventory = await StorageService().inventory()
             let result: [String: Any] = [
                 "model": hardware.model, "chip": hardware.chip, "cpuCores": hardware.coreCount,
                 "cpuPercent": sample.cpu.usage as Any? ?? NSNull(), "memoryTotal": sample.memory.total,
@@ -84,6 +85,8 @@ enum Diagnostics {
                 "batteryHealth": sample.battery.health as Any? ?? NSNull(), "batteryMaxCapacity": sample.battery.maxCapacity,
                 "batteryTemperature": sample.battery.temperature as Any? ?? NSNull(), "temperatureSensors": sample.temperatures.count,
                 "fans": sample.fans.count, "gpuPercent": sample.gpu as Any? ?? NSNull(),
+                "physicalDisks": inventory.count, "diskIODevices": sample.diskIO.map(\.id),
+                "metalDevices": hardware.gpuDevices.count, "modelSerialAvailable": hardware.serial != nil,
                 "volumes": sample.disks.count, "processes": sample.processes.count,
                 "downloadBytesPerSecond": sample.network.download as Any? ?? NSNull()
             ]

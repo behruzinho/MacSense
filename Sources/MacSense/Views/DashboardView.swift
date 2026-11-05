@@ -8,6 +8,7 @@ struct DashboardView: View {
         VStack(alignment: .leading, spacing: 22) {
             PageHeading(eyebrow: L("Всё под контролем"), title: L("Обзор системы"), description: L("Ваш Mac. Все важные показатели в одном месте."))
             deviceBanner
+            DisclosureGroup(L("Об этом Mac")) { HardwareInformationView() }
             HStack(alignment: .top, spacing: 16) {
                 VStack(spacing: 16) {
                     batteryCard

@@ -350,3 +350,147 @@
 "Размеры с ≥ неполные, в том числе при ограничениях доступа macOS. Крупные файлы от 500 МБ ищутся в Загрузках. Симуляторы и системные журналы доступны только для просмотра. Закройте Xcode и соответствующие приложения перед очисткой." = "Mit ≥ markierte Größen sind unvollständig, auch bei eingeschränktem macOS-Zugriff. Dateien ab 500 MB werden in Downloads gesucht. Simulatoren und Systemprotokolle sind nur lesbar. Xcode und betroffene Apps vor der Bereinigung schließen.";
 
 "Общий размер: %@. Выбранные данные и настройки также будут перемещены в Корзину." = "Gesamtgröße: %@. Ausgewählte Daten und Einstellungen werden ebenfalls in den Papierkorb verschoben.";
+
+"Плата" = "Hauptplatine";
+
+"Корпус" = "Gehäuse";
+
+"Об этом Mac" = "Über diesen Mac";
+
+"Имя компьютера" = "Computername";
+
+"Идентификатор модели" = "Modellkennung";
+
+"Серийный номер" = "Seriennummer";
+
+"Показать номер" = "Nummer anzeigen";
+
+"Скрыть номер" = "Nummer ausblenden";
+
+"Серийные номера скрыты и не включаются в экспорт отчёта." = "Seriennummern sind ausgeblendet und werden nicht in Berichte exportiert.";
+
+"Информация о батарее" = "Batterieinformationen";
+
+"Производитель" = "Hersteller";
+
+"Дата производства" = "Herstellungsdatum";
+
+"Проектное число циклов" = "Vorgesehene Ladezyklen";
+
+"Число ячеек" = "Zellenanzahl";
+
+"Архитектура памяти" = "Speicherarchitektur";
+
+"Единая память" = "Gemeinsamer Speicher";
+
+"Выделенная память" = "Dedizierter Speicher";
+
+"Общая память Mac" = "Gesamtspeicher des Mac";
+
+"Рекомендуемый бюджет Metal" = "Empfohlenes Metal-Budget";
+
+"Семейства Metal" = "Metal-Familien";
+
+"На Apple Silicon CPU и GPU используют общую память. Бюджет Metal — рекомендация для приложения, а не объём выделенной VRAM или её текущая загрузка." = "Auf Apple Silicon teilen CPU und GPU den Speicher. Das Metal-Budget ist eine Empfehlung pro App, keine dedizierte VRAM-Kapazität oder aktuelle Auslastung.";
+
+"Физические диски, APFS, состояние и производительность." = "Physische Laufwerke, APFS, Zustand und Leistung.";
+
+"Раздел" = "Bereich";
+
+"Информация" = "Informationen";
+
+"Статистика" = "Statistik";
+
+"Тест скорости" = "Geschwindigkeitstest";
+
+"Подключённые тома" = "Eingebundene Volumes";
+
+"Интерфейс" = "Schnittstelle";
+
+"Расположение" = "Position";
+
+"Встроенный" = "Intern";
+
+"Внешний" = "Extern";
+
+"Тип" = "Typ";
+
+"Размер блока" = "Blockgröße";
+
+"Съёмный" = "Entfernbar";
+
+"Запись разрешена" = "Beschreibbar";
+
+"Разделы и контейнеры APFS" = "Partitionen und APFS-Container";
+
+"Том APFS" = "APFS-Volume";
+
+"Контейнер APFS" = "APFS-Container";
+
+"Размер тома APFS — занятые данные; размер контейнера — общая ёмкость. Эти значения не складываются." = "Die APFS-Volume-Größe zeigt belegte Daten, die Containergröße die gemeinsame Kapazität. Diese Werte werden nicht addiert.";
+
+"Состояние накопителя" = "Laufwerkszustand";
+
+"Оценка оставшегося ресурса" = "Geschätzte verbleibende Lebensdauer";
+
+"Проверка SMART" = "SMART-Prüfung";
+
+"Пройдена" = "Bestanden";
+
+"Есть предупреждения" = "Warnungen gemeldet";
+
+"Источник: установленный smartctl. Ресурс рассчитан как 100 − Percentage Used и не является гарантией срока службы." = "Quelle: installiertes smartctl. Die Lebensdauer wird als 100 − Percentage Used geschätzt und ist keine Garantie.";
+
+"Подробные NVMe SMART доступны через установленный smartctl при разрешённом чтении устройства. Встроенный источник macOS сообщает только общий статус. Отсутствующие значения не заменяются нулями." = "Detailliertes NVMe-SMART benötigt installiertes smartctl und Lesezugriff auf das Gerät. macOS liefert nur den Gesamtstatus. Fehlende Werte werden nicht durch Nullen ersetzt.";
+
+"Ввод-вывод" = "Ein-/Ausgabe";
+
+"Прочитано с подключения" = "Seit Verbindung gelesen";
+
+"Записано с подключения" = "Seit Verbindung geschrieben";
+
+"Счётчики IOBlockStorageDriver относятся к текущему подключению устройства, а не ко всему сроку службы SSD." = "IOBlockStorageDriver-Zähler gelten seit der aktuellen Geräteverbindung, nicht für die gesamte SSD-Lebensdauer.";
+
+"Тестируется диск выбранной папки. Записывается и читается один временный файл; кэш файлов отключён. Файл удаляется после завершения или отмены." = "Testet das Laufwerk des gewählten Ordners. Eine temporäre Datei wird ohne Dateicache geschrieben und gelesen und danach oder bei Abbruch gelöscht.";
+
+"Выбрать папку…" = "Ordner auswählen…";
+
+"Размер теста" = "Testgröße";
+
+"Начать тест" = "Test starten";
+
+"Тест отменён. Временный файл удалён." = "Test abgebrochen. Temporäre Datei gelöscht.";
+
+"Тест уже выполняется" = "Ein Test läuft bereits";
+
+"Размер теста должен быть от 4 до 1024 МБ" = "Die Testgröße muss zwischen 4 und 1024 MB liegen";
+
+"Выберите доступную папку на нужном диске" = "Einen zugänglichen Ordner auf dem gewünschten Laufwerk wählen";
+
+"Недостаточно свободного места для временного файла" = "Nicht genügend freier Speicher für die temporäre Datei";
+
+"Критическое предупреждение" = "Kritische Warnung";
+
+"Доступный резерв" = "Verfügbare Reserve";
+
+"Израсходованный ресурс" = "Verbrauchte Lebensdauer";
+
+"Прочитано за срок службы" = "Insgesamt gelesene Daten";
+
+"Записано за срок службы" = "Insgesamt geschriebene Daten";
+
+"Команды чтения" = "Lesebefehle";
+
+"Команды записи" = "Schreibbefehle";
+
+"Время занятости контроллера" = "Controller-Auslastungszeit";
+
+"Включения" = "Einschaltzyklen";
+
+"Часы работы" = "Betriebsstunden";
+
+"Небезопасные отключения" = "Unsichere Abschaltungen";
+
+"Ошибки целостности данных" = "Medien- und Datenintegritätsfehler";
+
+"Записи журнала ошибок" = "Fehlerprotokolleinträge";

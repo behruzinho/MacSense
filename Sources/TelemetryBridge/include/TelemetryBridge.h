@@ -21,6 +21,9 @@ typedef struct { uint64_t received, sent; bool valid; } MSNetwork;
 typedef struct { char key[5]; double value; } MSTemperature;
 typedef struct { int index; double current, minimum, maximum; } MSFan;
 
+typedef struct { char name[64]; uint64_t read, written; } MSDiskIO;
+int ms_disk_io(MSDiskIO *output, int capacity);
+
 int ms_cpu_ticks(MSCPUTicks *output, int capacity);
 MSMemory ms_memory(void);
 MSBattery ms_battery(void);
