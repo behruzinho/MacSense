@@ -1,0 +1,24 @@
+name: macOS build and tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Test telemetry, file policy, and localizations
+        run: swift test
+      - name: Build app bundle
+        run: ./script/build_and_run.sh --build
+      - name: Validate signature
+        run: codesign --verify --deep --strict dist/MacSense.app
