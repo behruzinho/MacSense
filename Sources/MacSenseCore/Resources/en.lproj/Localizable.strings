@@ -494,3 +494,57 @@
 "Ошибки целостности данных" = "Media and data integrity errors";
 
 "Записи журнала ошибок" = "Error log entries";
+
+"Настройте живые панели и показатель в строке меню." = "Customize live panels and the menu bar metric.";
+
+"Единая колонка" = "Single column";
+
+"Настроить панели" = "Configure panels";
+
+"Показывать строку меню" = "Show menu bar item";
+
+"Переместить выше" = "Move up";
+
+"Переместить ниже" = "Move down";
+
+"Восстановить панели" = "Reset panels";
+
+"Выберите панели в настройках выше." = "Choose panels in the settings above.";
+
+"Показатель в меню" = "Menu bar metric";
+
+"Загрузка сети" = "Network download";
+
+"Обратная связь" = "Feedback";
+
+"Объекты входа" = "Login items";
+
+"Запускать MacSense при входе" = "Launch MacSense at login";
+
+"Разрешите автозапуск MacSense в настройках macOS." = "Allow MacSense at login in macOS Settings.";
+
+"Сторонние объекты входа управляются в настройках macOS." = "Manage other apps’ login items in macOS Settings.";
+
+"Состояние launchd" = "launchd status";
+
+"Разрешён запуск" = "Launch allowed";
+
+"Запуск отключён" = "Launch disabled";
+
+"Загружен" = "Loaded";
+
+"Не загружен" = "Not loaded";
+
+"Состояние процесса недоступно" = "Process state unavailable";
+
+"Переключатели пользовательских агентов изменяют разрешение launchd для будущих запусков. Уже загруженный процесс не останавливается. Системные агенты и службы доступны только для просмотра." = "User agent switches change launchd permission for future launches. An already loaded process is not stopped. System agents and daemons are view only.";
+
+"Разрешить запуск агента?" = "Allow this agent to launch?";
+
+"Отключить запуск агента?" = "Disable this agent’s launch?";
+
+"Разрешить запуск" = "Allow launch";
+
+"Отключить запуск" = "Disable launch";
+
+"macOS не разрешила изменить состояние агента." = "macOS did not allow changing the agent’s state.";

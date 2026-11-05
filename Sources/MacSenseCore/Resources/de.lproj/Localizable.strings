@@ -494,3 +494,57 @@
 "Ошибки целостности данных" = "Medien- und Datenintegritätsfehler";
 
 "Записи журнала ошибок" = "Fehlerprotokolleinträge";
+
+"Настройте живые панели и показатель в строке меню." = "Live-Panels und Menüleistenwert anpassen.";
+
+"Единая колонка" = "Eine Spalte";
+
+"Настроить панели" = "Panels konfigurieren";
+
+"Показывать строку меню" = "Menüleisteneintrag anzeigen";
+
+"Переместить выше" = "Nach oben";
+
+"Переместить ниже" = "Nach unten";
+
+"Восстановить панели" = "Panels zurücksetzen";
+
+"Выберите панели в настройках выше." = "Panels in den Einstellungen oben auswählen.";
+
+"Показатель в меню" = "Menüleistenwert";
+
+"Загрузка сети" = "Netzwerk-Download";
+
+"Обратная связь" = "Feedback";
+
+"Объекты входа" = "Anmeldeobjekte";
+
+"Запускать MacSense при входе" = "MacSense bei Anmeldung starten";
+
+"Разрешите автозапуск MacSense в настройках macOS." = "MacSense in den macOS-Einstellungen für die Anmeldung erlauben.";
+
+"Сторонние объекты входа управляются в настройках macOS." = "Anmeldeobjekte anderer Apps in den macOS-Einstellungen verwalten.";
+
+"Состояние launchd" = "launchd-Status";
+
+"Разрешён запуск" = "Start erlaubt";
+
+"Запуск отключён" = "Start deaktiviert";
+
+"Загружен" = "Geladen";
+
+"Не загружен" = "Nicht geladen";
+
+"Состояние процесса недоступно" = "Prozessstatus nicht verfügbar";
+
+"Переключатели пользовательских агентов изменяют разрешение launchd для будущих запусков. Уже загруженный процесс не останавливается. Системные агенты и службы доступны только для просмотра." = "Schalter für Benutzeragenten ändern die launchd-Erlaubnis für künftige Starts. Bereits geladene Prozesse bleiben bestehen. Systemagenten und Dienste sind nur lesbar.";
+
+"Разрешить запуск агента?" = "Start dieses Agenten erlauben?";
+
+"Отключить запуск агента?" = "Start dieses Agenten deaktivieren?";
+
+"Разрешить запуск" = "Start erlauben";
+
+"Отключить запуск" = "Start deaktivieren";
+
+"macOS не разрешила изменить состояние агента." = "macOS hat die Änderung des Agentenstatus nicht erlaubt.";

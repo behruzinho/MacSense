@@ -53,7 +53,7 @@ struct MacSenseApp: App {
         MenuBarExtra(isInserted: $showMenuBar) {
             MenuMonitorView().environmentObject(monitor).environment(\.locale, L10n.locale).id(language)
         } label: {
-            Label(monitor.snapshot.cpu.usage.map { "\(Int($0))%" } ?? "MacSense", systemImage: "waveform.path.ecg")
+            MetricMenuLabel().environmentObject(monitor).id(language)
         }
         .menuBarExtraStyle(.window)
     }

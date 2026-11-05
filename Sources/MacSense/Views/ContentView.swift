@@ -2,11 +2,12 @@ import SwiftUI
 import MacSenseCore
 
 enum Destination: String, CaseIterable, Identifiable {
-    case overview, optimize, applications, clean, trim, cpu, memory, storage, graphics, battery, cooling, network
+    case overview, monitor, optimize, applications, clean, trim, cpu, memory, storage, graphics, battery, cooling, network
     var id: String { rawValue }
     var title: String {
         switch self {
         case .overview: L("Обзор")
+        case .monitor: L("Мониторинг")
         case .optimize: L("Автозагрузка")
         case .applications: L("Приложения")
         case .clean: L("Очистка")
@@ -23,6 +24,7 @@ enum Destination: String, CaseIterable, Identifiable {
     var icon: String {
         switch self {
         case .overview: "square.grid.2x2"
+        case .monitor: "chart.bar.xaxis"
         case .optimize: "speedometer"
         case .applications: "app.badge"
         case .clean: "sparkles"
@@ -68,13 +70,21 @@ struct ContentView: View {
                 }
                 Text("MacSense").font(.system(size: 18, weight: .semibold))
             }.padding(.horizontal, 21).padding(.top, 48).padding(.bottom, 24)
+            ScrollView {
+                VStack(spacing: 0) {
             navRow(.overview)
+            navRow(.monitor)
             sectionLabel(L("УТИЛИТЫ"))
             ForEach([Destination.optimize, .applications, .clean, .trim]) { navRow($0) }
             sectionLabel(L("ОБОРУДОВАНИЕ"))
             ForEach([Destination.cpu, .memory, .storage, .graphics, .battery, .cooling, .network]) { navRow($0) }
-            Spacer(minLength: 15)
+                }
+            }.scrollIndicators(.hidden)
+            Spacer(minLength: 8)
             Divider().padding(.horizontal, 16)
+            Link(destination: URL(string: "https://github.com/behruzinho/MacSense/issues/new")!) {
+                Label(L("Обратная связь"), systemImage: "bubble.left").font(.system(size: 12)).frame(maxWidth: .infinity, alignment: .leading).padding(12)
+            }.buttonStyle(.plain).padding(.horizontal, 8)
             SettingsLink { Label(L("Настройки"), systemImage: "gearshape").font(.system(size: 12)).frame(maxWidth: .infinity, alignment: .leading).padding(12) }
                 .buttonStyle(.plain).padding(.horizontal, 8).padding(.top, 5)
             Link(destination: URL(string: "https://github.com/behruzinho")!) {
@@ -139,6 +149,7 @@ struct ContentView: View {
     @ViewBuilder private var page: some View {
         switch selection {
         case .overview: DashboardView()
+        case .monitor: MonitorView()
         case .cpu: ProcessorView()
         case .memory: MemoryView()
         case .battery: BatteryView()

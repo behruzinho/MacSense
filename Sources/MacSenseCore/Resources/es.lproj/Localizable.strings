@@ -494,3 +494,57 @@
 "Ошибки целостности данных" = "Errores de integridad de datos";
 
 "Записи журнала ошибок" = "Entradas del registro de errores";
+
+"Настройте живые панели и показатель в строке меню." = "Personaliza paneles en vivo y la métrica del menú.";
+
+"Единая колонка" = "Columna única";
+
+"Настроить панели" = "Configurar paneles";
+
+"Показывать строку меню" = "Mostrar en la barra de menús";
+
+"Переместить выше" = "Subir";
+
+"Переместить ниже" = "Bajar";
+
+"Восстановить панели" = "Restablecer paneles";
+
+"Выберите панели в настройках выше." = "Elige paneles en los ajustes de arriba.";
+
+"Показатель в меню" = "Métrica del menú";
+
+"Загрузка сети" = "Descarga de red";
+
+"Обратная связь" = "Comentarios";
+
+"Объекты входа" = "Ítems de inicio";
+
+"Запускать MacSense при входе" = "Iniciar MacSense al entrar";
+
+"Разрешите автозапуск MacSense в настройках macOS." = "Permite el inicio de MacSense en los ajustes de macOS.";
+
+"Сторонние объекты входа управляются в настройках macOS." = "Gestiona los ítems de otras apps en los ajustes de macOS.";
+
+"Состояние launchd" = "Estado de launchd";
+
+"Разрешён запуск" = "Inicio permitido";
+
+"Запуск отключён" = "Inicio desactivado";
+
+"Загружен" = "Cargado";
+
+"Не загружен" = "Sin cargar";
+
+"Состояние процесса недоступно" = "Estado del proceso no disponible";
+
+"Переключатели пользовательских агентов изменяют разрешение launchd для будущих запусков. Уже загруженный процесс не останавливается. Системные агенты и службы доступны только для просмотра." = "Los interruptores cambian el permiso de launchd para futuros inicios. No detienen procesos ya cargados. Los agentes y servicios del sistema son de solo lectura.";
+
+"Разрешить запуск агента?" = "¿Permitir el inicio del agente?";
+
+"Отключить запуск агента?" = "¿Desactivar el inicio del agente?";
+
+"Разрешить запуск" = "Permitir inicio";
+
+"Отключить запуск" = "Desactivar inicio";
+
+"macOS не разрешила изменить состояние агента." = "macOS no permitió cambiar el estado del agente.";

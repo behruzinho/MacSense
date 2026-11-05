@@ -95,17 +95,8 @@ public actor UtilityService {
         await progress?(ScanProgress(completed: roots.count, total: roots.count, current: ""))
         return items.sorted { $0.bytes > $1.bytes }
     }
-    public func startupEntries() -> [StartupEntry] {
-        let roots: [(String, String)] = [(home.appendingPathComponent("Library/LaunchAgents").path, "Пользовательские агенты"), ("/Library/LaunchAgents", "Агенты системы"), ("/Library/LaunchDaemons", "Фоновые службы")]
-        return roots.flatMap { path, group -> [StartupEntry] in
-            let urls = (try? fm.contentsOfDirectory(at: URL(fileURLWithPath: path), includingPropertiesForKeys: nil)) ?? []
-            return urls.filter { $0.pathExtension == "plist" }.compactMap { url in
-                guard let data = try? Data(contentsOf: url), let plist = (try? PropertyListSerialization.propertyList(from: data, format: nil)) as? [String: Any] else { return nil }
-                let arguments = plist["ProgramArguments"] as? [String]
-                return StartupEntry(url: url, label: plist["Label"] as? String ?? url.deletingPathExtension().lastPathComponent, program: plist["Program"] as? String ?? arguments?.first ?? "—", group: group, runAtLoad: plist["RunAtLoad"] as? Bool ?? false)
-            }.sorted { $0.label < $1.label }
-        }
-    }
+    public func startupEntries() -> [StartupEntry] { StartupService.entries(home: home) }
+    public func setStartupEnabled(_ enabled: Bool, entry: StartupEntry) -> Bool { StartupService.setEnabled(enabled, entry: entry, home: home) }
     public func trash(_ files: [FileCandidate]) -> TrashResult {
         var removed: [String] = [], failures: [String] = []
         for item in UtilityPolicy.independentFiles(files) {

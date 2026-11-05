@@ -6,6 +6,7 @@ struct SettingsView: View {
     @AppStorage("appearance") private var appearance = "dark"
     @AppStorage("language") private var language = "ru"
     @AppStorage("showMenuBar") private var showMenuBar = true
+    @AppStorage("menuMetric") private var menuMetric = "cpu"
     var body: some View {
         Form {
             Section {
@@ -24,7 +25,8 @@ struct SettingsView: View {
                     Text(L("Каждые 5 секунд")).tag(5.0)
                     Text(L("Каждые 10 секунд")).tag(10.0)
                 }
-                Toggle(L("Показывать CPU в строке меню"), isOn: $showMenuBar)
+                Toggle(L("Показывать строку меню"), isOn: $showMenuBar)
+                MenuMetricPicker(selection: $menuMetric)
                 Toggle(L("Приостановить мониторинг"), isOn: $monitor.paused)
             }
             Section(L("Язык и оформление")) {
@@ -50,27 +52,23 @@ struct SettingsView: View {
 struct MenuMonitorView: View {
     @EnvironmentObject private var monitor: MonitorStore
     @Environment(\.openWindow) private var openWindow
+    @AppStorage("monitorPanels") private var encoded = MonitorConfiguration.defaultEncoded
     var body: some View {
-        VStack(alignment: .leading, spacing: 17) {
+        VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Label("MacSense", systemImage: "waveform.path.ecg").font(.system(size: 14, weight: .semibold))
                 Spacer()
-                Circle().fill(monitor.paused ? Palette.orange : Palette.green).frame(width: 6, height: 6)
+                Button { monitor.paused.toggle() } label: { Image(systemName: monitor.paused ? "play.fill" : "pause.fill") }.buttonStyle(.plain).help(L("Приостановить или продолжить мониторинг"))
             }
-            DetailRow(title: L("Процессор"), value: Fmt.percent(monitor.snapshot.cpu.usage))
-            Meter(value: monitor.snapshot.cpu.usage ?? 0)
-            DetailRow(title: L("Память"), value: "\(Fmt.bytes(monitor.snapshot.memory.used)) / \(Fmt.bytes(monitor.snapshot.memory.total))")
-            Meter(value: monitor.snapshot.memory.percentage, tint: Palette.purple)
-            if monitor.snapshot.battery.present {
-                DetailRow(title: L("Батарея"), value: Fmt.percent(monitor.snapshot.battery.percentage))
-            }
-            if let temperature = monitor.snapshot.cpuTemperature { DetailRow(title: L("Температура CPU"), value: Fmt.temperature(temperature)) }
+            ScrollView {
+                LazyVStack(spacing: 12) { ForEach(MonitorConfiguration(encoded: encoded).panels) { MonitorPanelView(panel: $0) } }
+            }.frame(maxHeight: 520)
             Divider()
             HStack {
                 Button(L("Открыть MacSense")) { openWindow(id: "main"); NSApp.activate(ignoringOtherApps: true) }
                 Spacer()
                 Button { NSApp.terminate(nil) } label: { Image(systemName: "power") }.help(L("Завершить MacSense"))
             }.controlSize(.small)
-        }.padding(20).frame(width: 310).task { monitor.start() }
+        }.padding(16).frame(width: 340).task { monitor.start() }
     }
 }
