@@ -12,11 +12,13 @@ A native macOS system monitor by [behruzinho](https://github.com/behruzinho).
 - Дополнительные сведения о батарее и Metal. Пять языков: русский, английский, китайский, испанский и немецкий.
 - Новое окно DMG: Retina-фон, крупные значки и понятная установка перетаскиванием. Убрана подпись о неподключённой странице поддержки.
 
+**Updated 6 November 2026:** DMG and ZIP downloads now include Apple notarization tickets. The application executable and version are unchanged; SHA-256 checksums have been updated.
+
 ### Download and install
 
 **macOS 14+ · Apple Silicon (arm64).** Open the DMG, drag MacSense into Applications, then launch it from Applications. A ZIP containing the same app and SHA-256 checksums are also attached. No tested Intel binary is included.
 
-**Signing:** Developer ID Application: Behruz Numonov (J7PWR289L2), hardened runtime and secure timestamp. **This release is not notarized by Apple**; macOS may ask you to review it before launch. Keep Gatekeeper enabled and follow [Apple’s guidance](https://support.apple.com/102445).
+**Signing:** Developer ID Application: Behruz Numonov (J7PWR289L2), hardened runtime and secure timestamp. **Notarized by Apple.** Both the app and DMG were accepted without issues; notarization tickets are stapled and Gatekeeper accepts the release as `Notarized Developer ID`. The ZIP contains the stapled app.
 
 ### What changed
 
@@ -26,6 +28,6 @@ Detailed NVMe SMART uses an optional, separately installed `smartctl` with devic
 
 Telemetry stays on your Mac. Files move to Trash only after selection and confirmation; no automatic cleanup runs. Serial numbers are excluded from reports.
 
-Validation: 22 automated checks, localization coverage, release build, Developer ID signatures, DMG/ZIP integrity and SHA-256 verification. Finder installer layout checked on macOS. User files were not deleted and startup services were not changed during validation.
+Validation: 22 automated checks, localization coverage, release build, Developer ID signatures, Apple notarization logs, stapled tickets, Gatekeeper assessment, DMG/ZIP integrity and SHA-256 verification. Finder installer layout checked on macOS. User files were not deleted and startup services were not changed during validation.
 
-[Source and README](https://github.com/behruzinho/MacSense/tree/v0.2.0) · [Russian checklist](https://github.com/behruzinho/MacSense/blob/v0.2.0/docs/TESTING.ru.md) · [MIT license](https://github.com/behruzinho/MacSense/blob/v0.2.0/LICENSE)
+[Source (v0.2.0)](https://github.com/behruzinho/MacSense/tree/v0.2.0) · [README](https://github.com/behruzinho/MacSense/blob/main/README.md) · [Russian checklist](https://github.com/behruzinho/MacSense/blob/main/docs/TESTING.ru.md) · [MIT license](https://github.com/behruzinho/MacSense/blob/v0.2.0/LICENSE)

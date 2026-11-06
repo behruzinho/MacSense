@@ -27,7 +27,7 @@ Download the DMG for your version from [Releases](https://github.com/behruzinho/
 
 **[MacSense 0.2.0](https://github.com/behruzinho/MacSense/releases/tag/v0.2.0)** includes the expanded dashboard, storage tools, grouped cleanup and configurable monitoring panels.
 
-The 0.2.0 downloads are signed with Developer ID Application and hardened runtime. **This release is not notarized by Apple.** The signing and notarization status of each download is stated in its release notes. Keep Gatekeeper enabled; see [Apple’s guidance](https://support.apple.com/102445) if macOS reports a launch restriction.
+The 0.2.0 downloads are signed with Developer ID Application and hardened runtime. **Apple notarization completed on 6 November 2026.** Tickets are stapled to the app and DMG; the ZIP includes the stapled app. The signing and notarization status of each download is stated in its release notes. Keep Gatekeeper enabled; see [Apple’s guidance](https://support.apple.com/102445) if macOS reports a launch restriction.
 
 ## Features
 

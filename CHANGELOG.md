@@ -16,7 +16,7 @@
 - Designed Retina DMG installer with app-to-Applications layout and bilingual instructions.
 - Removed the unconfigured support-page caption from Settings and About.
 
-Distribution: Developer ID signed, Apple Silicon (arm64), macOS 14+. This release is not notarized by Apple.
+Distribution: Developer ID signed and notarized by Apple, Apple Silicon (arm64), macOS 14+. On 2026-11-06 the downloads were refreshed with stapled Apple tickets and updated SHA-256 checksums; the executable and version are unchanged.
 
 ## 0.1.0 — 2026-11-05
 
