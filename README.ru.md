@@ -18,6 +18,16 @@
 
 Файлы 0.2.0 подписаны Developer ID Application с hardened runtime. **Проверка notarization Apple завершена 6 ноября 2026 года.** Подтверждения Apple прикреплены к приложению и DMG; ZIP содержит приложение с подтверждением. Статус конкретной сборки указан в её релизе. Сохраняйте Gatekeeper включённым. Если macOS ограничивает запуск, ознакомьтесь с [инструкцией Apple](https://support.apple.com/102445).
 
+## Скриншоты
+
+Нажмите на скриншот, чтобы открыть его в полном размере.
+
+| Обзор системы | Мониторинг |
+| :---: | :---: |
+| [![Обзор MacSense: характеристики Mac и текущие показатели](docs/screenshots/dashboard.png)](docs/screenshots/dashboard.png) | [![Настраиваемые панели мониторинга MacSense](docs/screenshots/monitoring.png)](docs/screenshots/monitoring.png) |
+| **Приложения** | **Батарея** |
+| [![Приложения и группы связанных файлов в MacSense](docs/screenshots/applications.png)](docs/screenshots/applications.png) | [![Заряд, состояние и электрические параметры батареи в MacSense](docs/screenshots/battery.png)](docs/screenshots/battery.png) |
+
 ## Возможности
 
 - Общая панель показателей с графиками и характеристиками Mac.
