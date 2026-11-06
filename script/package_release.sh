@@ -15,9 +15,9 @@ mkdir -p "$RELEASE_DIR"
 STAGING_DIR="$(mktemp -d "$ROOT_DIR/.build/package.XXXXXX")"
 trap 'rm -rf "$STAGING_DIR"' EXIT
 /usr/bin/ditto "$APP_BUNDLE" "$STAGING_DIR/MacSense.app"
-ln -s /Applications "$STAGING_DIR/Applications"
-cp "$ROOT_DIR/LICENSE" "$STAGING_DIR/LICENSE.txt"
-cat > "$STAGING_DIR/Read me.txt" <<'INSTALL'
+mkdir -p "$STAGING_DIR/Documentation"
+cp "$ROOT_DIR/LICENSE" "$STAGING_DIR/Documentation/LICENSE.txt"
+cat > "$STAGING_DIR/Documentation/Read me.txt" <<'INSTALL'
 MacSense
 
 Drag MacSense.app into Applications, then open it from Applications.
@@ -31,7 +31,23 @@ Author: https://github.com/behruzinho
 Project: https://github.com/behruzinho/MacSense
 License: MIT
 INSTALL
-hdiutil create -volname "MacSense $APP_VERSION" -srcfolder "$STAGING_DIR" -format UDZO -ov "$RELEASE_DIR/$BASE_NAME.dmg"
+# Release-only tooling lives in an isolated virtual environment, never in the app.
+DMG_PYTHON="$ROOT_DIR/.build/dmg-tools/bin/python"
+if [ ! -x "$DMG_PYTHON" ]; then python3 -m venv "$ROOT_DIR/.build/dmg-tools"; fi
+if ! "$DMG_PYTHON" -c 'import importlib.metadata; assert all(importlib.metadata.version(k) == v for k, v in {"dmgbuild": "1.6.5", "ds-store": "1.3.1", "mac-alias": "2.2.2"}.items())' >/dev/null 2>&1; then
+    "$DMG_PYTHON" -m pip install -r "$ROOT_DIR/script/dmg-requirements.txt"
+fi
+swift "$ROOT_DIR/script/generate_dmg_background.swift" "$STAGING_DIR/background.tiff" "$APP_VERSION" "$ARCH"
+"$DMG_PYTHON" -m dmgbuild -s "$ROOT_DIR/script/dmg_settings.py" \
+    -D "app=$STAGING_DIR/MacSense.app" \
+    -D "documentation=$STAGING_DIR/Documentation" \
+    -D "background=$STAGING_DIR/background.tiff" \
+    -D "volume_name=MacSense $APP_VERSION" \
+    "MacSense $APP_VERSION" "$STAGING_DIR/$BASE_NAME.dmg"
+if [ -n "${MACSENSE_SIGN_IDENTITY:-}" ]; then
+    codesign --force --timestamp --sign "$MACSENSE_SIGN_IDENTITY" "$STAGING_DIR/$BASE_NAME.dmg"
+fi
+mv -f "$STAGING_DIR/$BASE_NAME.dmg" "$RELEASE_DIR/$BASE_NAME.dmg"
 /usr/bin/ditto -c -k --sequesterRsrc --keepParent "$APP_BUNDLE" "$RELEASE_DIR/$BASE_NAME.zip"
 (
     cd "$RELEASE_DIR"

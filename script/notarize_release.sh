@@ -10,7 +10,7 @@ RELEASE_DIR="$ROOT_DIR/dist/releases"
 WORK_DIR="$ROOT_DIR/.build/notarization"
 mkdir -p "$WORK_DIR"
 codesign --verify --deep --strict "$APP_BUNDLE"
-if ! codesign -dv --verbose=4 "$APP_BUNDLE" 2>&1 | rg '^Authority=Developer ID Application:' > /dev/null; then
+if ! codesign -dv --verbose=4 "$APP_BUNDLE" 2>&1 | /usr/bin/grep '^Authority=Developer ID Application:' > /dev/null; then
     echo "A Developer ID Application signature is required." >&2
     exit 1
 fi
