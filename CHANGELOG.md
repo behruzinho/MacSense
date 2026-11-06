@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2.0 — review build, unreleased
+## 0.2.0 — 2026-11-06
 
 - Preserved the existing dashboard design; added startup disk, chip, memory, OS/build and masked serial to the Mac banner.
 - Physical disks and APFS hierarchy, read/write history, bounded cancellable disk benchmark.
@@ -12,7 +12,11 @@
 - Actual launchd state, confirmed user-agent permissions and MacSense launch at login.
 - Five-language localization and parser, file-policy, cancellation and configuration tests.
 
-Manual review and Apple notarization remain pending before publication.
+- Refined Mac banner spacing and enlarged hardware badges.
+- Designed Retina DMG installer with app-to-Applications layout and bilingual instructions.
+- Removed the unconfigured support-page caption from Settings and About.
+
+Distribution: Developer ID signed, Apple Silicon (arm64), macOS 14+. This release is not notarized by Apple.
 
 ## 0.1.0 — 2026-11-05
 

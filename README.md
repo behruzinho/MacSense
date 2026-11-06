@@ -19,13 +19,15 @@ Created by **[behruzinho](https://github.com/behruzinho)**.
 
 ## Download and install
 
+**[Download MacSense 0.2.0 — DMG](https://github.com/behruzinho/MacSense/releases/download/v0.2.0/MacSense-0.2.0-arm64.dmg)** · [ZIP](https://github.com/behruzinho/MacSense/releases/download/v0.2.0/MacSense-0.2.0-arm64.zip) · [SHA-256](https://github.com/behruzinho/MacSense/releases/download/v0.2.0/MacSense-0.2.0-arm64-SHA256SUMS.txt)
+
 Download the DMG for your version from [Releases](https://github.com/behruzinho/MacSense/releases). Open the disk image and drag **MacSense.app** to **Applications**. A ZIP containing the same app and SHA-256 checksums are also provided.
 
-**Requirements:** macOS 14 or newer. The initial binary is for **Apple Silicon (arm64)**. Intel users can build from source; this release does not include a tested Intel binary.
+**Requirements:** macOS 14 or newer. The downloadable binary is for **Apple Silicon (arm64)**. Intel users can build from source; this release does not include a tested Intel binary.
 
-**0.2.0 is currently a review build, not a published release.** Source changes are available on `main`; binaries will be published after manual review.
+**[MacSense 0.2.0](https://github.com/behruzinho/MacSense/releases/tag/v0.2.0)** includes the expanded dashboard, storage tools, grouped cleanup and configurable monitoring panels.
 
-Release packaging supports Developer ID signing and Apple notarization. The signing and notarization status of each download is stated in its release notes. Keep Gatekeeper enabled; see [Apple’s guidance](https://support.apple.com/102445) if macOS reports a launch restriction.
+The 0.2.0 downloads are signed with Developer ID Application and hardened runtime. **This release is not notarized by Apple.** The signing and notarization status of each download is stated in its release notes. Keep Gatekeeper enabled; see [Apple’s guidance](https://support.apple.com/102445) if macOS reports a launch restriction.
 
 ## Features
 
@@ -75,7 +77,7 @@ Directory-size scans have a time limit; **≥** indicates a partial size. Some p
 - Process CPU percentages come from `ps`; memory is RSS. This is not a complete Activity Monitor replacement.
 - Detailed NVMe SMART requires a separately installed `smartctl` in `/opt/homebrew/bin` or `/usr/local/bin` and permission to read the drive. It is not bundled, installed automatically or run through `sudo`. Missing SMART values remain unavailable.
 - The speed test writes/reads one unique 64–1024 MiB scratch file on the chosen folder’s drive, with file caching disabled, and removes it after completion or cancellation. Results depend on workload and the filesystem.
-- Model release/factory dates, custom widgets, privileged helpers, manual fan control, TRIM changes and automatic updates remain outside this review build.
+- Model release/factory dates, custom widgets, privileged helpers, manual fan control, TRIM changes and automatic updates are not included in 0.2.0.
 - [Sensei comparison checklist (Russian)](docs/SENSEI_CHECKLIST.ru.md) · [Manual review checklist (Russian)](docs/TESTING.ru.md).
 
 ## Build from source
@@ -98,6 +100,8 @@ swift test                              # telemetry, file boundaries, localizati
 ./script/build_and_run.sh --logs         # launch and stream logs
 ./script/package_release.sh             # optimized .app, DMG, ZIP, checksums
 ```
+
+DMG packaging uses `dmgbuild` in an isolated `.build/dmg-tools` Python environment. The packaging script installs the pinned build dependency when needed; it is not bundled with the app. The installer has a Retina background and a saved Finder layout. License and installation notes are included in `.Documentation` inside the image.
 
 Read-only diagnostics:
 
