@@ -18,9 +18,6 @@ struct SupportView: View {
             Button(L("Угостить чашкой кофе"), systemImage: "cup.and.saucer.fill") {
                 if let url = SupportConfiguration.url { NSWorkspace.shared.open(url) }
             }.disabled(SupportConfiguration.url == nil)
-            if SupportConfiguration.url == nil {
-                Text(L("Страница поддержки пока не подключена.")).font(.system(size: 10)).foregroundStyle(.tertiary)
-            }
         }.padding(.vertical, 4)
     }
 }
