@@ -35,12 +35,13 @@ public func L(_ message: LocalizedMessage) -> String {
     return String(format: template, locale: L10n.locale, arguments: message.arguments)
 }
 public enum L10n {
+    public static let defaultLanguage = AppLanguage.en.rawValue
     public static var language: String {
-        let saved = UserDefaults.standard.string(forKey: "language") ?? "ru"
-        return resolve(saved)
+        resolve(UserDefaults.standard.string(forKey: "language"))
     }
     public static var locale: Locale { Locale(identifier: language) }
-    public static func resolve(_ value: String) -> String {
+    public static func resolve(_ savedLanguage: String?) -> String {
+        let value = savedLanguage ?? defaultLanguage
         let candidate = value == "system" ? Locale.preferredLanguages.first ?? "en" : value
         if candidate.hasPrefix("zh") { return "zh-Hans" }
         return ["ru", "en", "es", "de"].first { candidate.hasPrefix($0) } ?? "en"

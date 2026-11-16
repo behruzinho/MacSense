@@ -6,7 +6,7 @@ struct MacSenseApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var delegate
     @StateObject private var monitor = MonitorStore()
     @AppStorage("appearance") private var appearance = "dark"
-    @AppStorage("language") private var language = "ru"
+    @AppStorage("language") private var language = L10n.defaultLanguage
     @AppStorage("showMenuBar") private var showMenuBar = true
 
     init() {

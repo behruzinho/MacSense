@@ -4,19 +4,19 @@
 
 Автор: **[behruzinho](https://github.com/behruzinho)** · [English](README.md) · [Скачать](https://github.com/behruzinho/MacSense/releases)
 
-**[MacSense 0.2.0](https://github.com/behruzinho/MacSense/releases/tag/v0.2.0)** — второй публичный выпуск: расширенный обзор Mac, инструменты накопителей, групповая очистка и настраиваемый мониторинг.
+**[MacSense 0.3.0](https://github.com/behruzinho/MacSense/releases/tag/v0.3.0)** — публичный выпуск: английский при первом запуске и заголовок настроек, который меняется вместе с языком интерфейса. Сохранённый выбор языка учитывается.
 
 ## Установка
 
-**[Скачать MacSense 0.2.0 — DMG](https://github.com/behruzinho/MacSense/releases/download/v0.2.0/MacSense-0.2.0-arm64.dmg)** · [ZIP](https://github.com/behruzinho/MacSense/releases/download/v0.2.0/MacSense-0.2.0-arm64.zip) · [SHA-256](https://github.com/behruzinho/MacSense/releases/download/v0.2.0/MacSense-0.2.0-arm64-SHA256SUMS.txt)
+**[Скачать MacSense 0.3.0 — DMG](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-arm64.dmg)** · [ZIP](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-0.3.0-arm64.zip) · [SHA-256](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-0.3.0-arm64-SHA256SUMS.txt)
 
-1. Скачайте **DMG нужной версии** на странице [Releases](https://github.com/behruzinho/MacSense/releases).
+1. Скачайте **MacSense-arm64.dmg** для Apple Silicon на странице [Releases](https://github.com/behruzinho/MacSense/releases).
 2. Откройте DMG и перетащите **MacSense.app** в **Applications / Программы**.
 3. Запустите приложение из «Программ».
 
-Требуется **macOS 14+**. Готовая сборка предназначена для **Apple Silicon (arm64)**. Также доступны ZIP с приложением и контрольные суммы SHA-256. Для Intel можно собрать исходники; проверенной Intel-сборки в этом релизе нет.
+Требуется **macOS 14+**. Опубликованная сборка предназначена для **Apple Silicon (arm64)**. Intel-сборка x86_64 прошла 23 автоматических теста и запуск диагностики через Rosetta на Apple Silicon; перед добавлением в загрузки она ожидает notarization. На настоящем Intel Mac она пока не проверена.
 
-Файлы 0.2.0 подписаны Developer ID Application с hardened runtime. **Проверка notarization Apple завершена 6 ноября 2026 года.** Подтверждения Apple прикреплены к приложению и DMG; ZIP содержит приложение с подтверждением. Статус конкретной сборки указан в её релизе. Сохраняйте Gatekeeper включённым. Если macOS ограничивает запуск, ознакомьтесь с [инструкцией Apple](https://support.apple.com/102445).
+Файлы 0.3.0 для Apple Silicon подписаны Developer ID Application с hardened runtime и **прошли notarization Apple**. Подтверждения прикреплены к приложению и DMG; ZIP содержит приложение с подтверждением. Статус конкретной сборки указан в её релизе. Сохраняйте Gatekeeper включённым. Если macOS ограничивает запуск, ознакомьтесь с [инструкцией Apple](https://support.apple.com/102445).
 
 ## Скриншоты
 
@@ -45,7 +45,7 @@
 
 ## Языки
 
-В **Настройки → Язык и оформление** можно выбрать русский, английский, упрощённый китайский, испанский, немецкий или язык системы. Переключение работает без перезапуска. Переведены интерфейс, диалоги, отчёты и единицы; системные меню macOS могут следовать языку системы.
+При первом запуске используется английский язык. В **Настройки → Язык и оформление** можно выбрать русский, английский, упрощённый китайский, испанский, немецкий или язык системы. Переключение работает без перезапуска. Переведены интерфейс, заголовок окна настроек, диалоги, отчёты и единицы; системные меню macOS могут следовать языку системы.
 
 ## Приватность и удаление файлов
 

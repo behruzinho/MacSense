@@ -36,8 +36,9 @@ submit "$RELEASE_DIR/$BASE_NAME.dmg" "$WORK_DIR/dmg-result.json"
 xcrun stapler staple "$RELEASE_DIR/$BASE_NAME.dmg"
 xcrun stapler validate "$RELEASE_DIR/$BASE_NAME.dmg"
 spctl --assess --type execute --verbose=2 "$APP_BUNDLE"
+cp "$RELEASE_DIR/$BASE_NAME.dmg" "$RELEASE_DIR/MacSense-$ARCH.dmg"
 (
     cd "$RELEASE_DIR"
-    shasum -a 256 "$BASE_NAME.dmg" "$BASE_NAME.zip" > "$BASE_NAME-SHA256SUMS.txt"
+    shasum -a 256 "$BASE_NAME.dmg" "$BASE_NAME.zip" "MacSense-$ARCH.dmg" > "$BASE_NAME-SHA256SUMS.txt"
 )
 echo "Notarized and stapled release assets: $RELEASE_DIR"

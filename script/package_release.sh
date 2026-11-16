@@ -49,8 +49,9 @@ if [ -n "${MACSENSE_SIGN_IDENTITY:-}" ]; then
 fi
 mv -f "$STAGING_DIR/$BASE_NAME.dmg" "$RELEASE_DIR/$BASE_NAME.dmg"
 /usr/bin/ditto -c -k --sequesterRsrc --keepParent "$APP_BUNDLE" "$RELEASE_DIR/$BASE_NAME.zip"
+cp "$RELEASE_DIR/$BASE_NAME.dmg" "$RELEASE_DIR/MacSense-$ARCH.dmg"
 (
     cd "$RELEASE_DIR"
-    shasum -a 256 "$BASE_NAME.dmg" "$BASE_NAME.zip" > "$BASE_NAME-SHA256SUMS.txt"
+    shasum -a 256 "$BASE_NAME.dmg" "$BASE_NAME.zip" "MacSense-$ARCH.dmg" > "$BASE_NAME-SHA256SUMS.txt"
 )
 echo "Release assets: $RELEASE_DIR"

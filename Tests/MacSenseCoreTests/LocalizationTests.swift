@@ -14,6 +14,13 @@ final class LocalizationTests: XCTestCase {
             }
         }
     }
+    func testFirstLaunchUsesEnglishAndPreservesSavedLanguageChoices() {
+        XCTAssertEqual(L10n.resolve(nil), "en")
+        for language in AppLanguage.allCases where language != .system {
+            XCTAssertEqual(L10n.resolve(language.rawValue), language.rawValue)
+        }
+        XCTAssertEqual(L10n.resolve("system"), L10n.resolve(Locale.preferredLanguages.first))
+    }
     func testLanguageResolutionAndFallback() {
         XCTAssertEqual(L10n.resolve("zh-TW"), "zh-Hans")
         XCTAssertEqual(L10n.resolve("en-GB"), "en")

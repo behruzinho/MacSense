@@ -4,7 +4,7 @@ import MacSenseCore
 struct SettingsView: View {
     @EnvironmentObject private var monitor: MonitorStore
     @AppStorage("appearance") private var appearance = "dark"
-    @AppStorage("language") private var language = "ru"
+    @AppStorage("language") private var language = L10n.defaultLanguage
     @AppStorage("showMenuBar") private var showMenuBar = true
     @AppStorage("menuMetric") private var menuMetric = "cpu"
     var body: some View {
@@ -46,6 +46,7 @@ struct SettingsView: View {
                 Label(L("Все показатели обрабатываются локально. Приложение не отправляет данные в интернет."), systemImage: "lock.shield").font(.system(size: 11)).foregroundStyle(.secondary)
             }
         }.formStyle(.grouped).frame(width: 540, height: 670)
+            .background(WindowTitle(title: "\(L("Настройки")) — MacSense"))
     }
 }
 

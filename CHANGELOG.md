@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0 — 2026-11-16
+
+- Prepared an Intel (x86_64) build, verified with 23 tests and a diagnostic launch through Rosetta; its download awaits notarization and physical Intel validation is pending.
+- English is now the default on first launch; saved language selections are preserved.
+- The native Settings window title follows the selected app language immediately, including after reopening the window.
+- The main Apple Silicon installer uses the stable filename `MacSense-arm64.dmg`; packaging and notarization refresh its SHA-256 checksum together with the versioned assets.
+
 ## 0.2.0 — 2026-11-06
 
 - Preserved the existing dashboard design; added startup disk, chip, memory, OS/build and masked serial to the Mac banner.

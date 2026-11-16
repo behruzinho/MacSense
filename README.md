@@ -19,15 +19,15 @@ Created by **[behruzinho](https://github.com/behruzinho)**.
 
 ## Download and install
 
-**[Download MacSense 0.2.0 — DMG](https://github.com/behruzinho/MacSense/releases/download/v0.2.0/MacSense-0.2.0-arm64.dmg)** · [ZIP](https://github.com/behruzinho/MacSense/releases/download/v0.2.0/MacSense-0.2.0-arm64.zip) · [SHA-256](https://github.com/behruzinho/MacSense/releases/download/v0.2.0/MacSense-0.2.0-arm64-SHA256SUMS.txt)
+**[Download MacSense 0.3.0 — DMG](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-arm64.dmg)** · [ZIP](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-0.3.0-arm64.zip) · [SHA-256](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-0.3.0-arm64-SHA256SUMS.txt)
 
-Download the DMG for your version from [Releases](https://github.com/behruzinho/MacSense/releases). Open the disk image and drag **MacSense.app** to **Applications**. A ZIP containing the same app and SHA-256 checksums are also provided.
+Download the DMG for your version from [Releases](https://github.com/behruzinho/MacSense/releases). Open the disk image and drag **MacSense.app** to **Applications**. The Apple Silicon installer is named **MacSense-arm64.dmg**. A ZIP containing the same app and SHA-256 checksums are also provided.
 
-**Requirements:** macOS 14 or newer. The downloadable binary is for **Apple Silicon (arm64)**. Intel users can build from source; this release does not include a tested Intel binary.
+**Requirements:** macOS 14 or newer. The published download is for **Apple Silicon (arm64)**. An Intel (x86_64) build has passed 23 automated tests and a diagnostic launch through Rosetta on Apple Silicon, but is awaiting notarization before being added to the downloads. Physical Intel Mac validation is still pending.
 
-**[MacSense 0.2.0](https://github.com/behruzinho/MacSense/releases/tag/v0.2.0)** includes the expanded dashboard, storage tools, grouped cleanup and configurable monitoring panels.
+**[MacSense 0.3.0](https://github.com/behruzinho/MacSense/releases/tag/v0.3.0)** starts in English by default and keeps the Settings window title in sync with the selected app language. Existing language choices are preserved.
 
-The 0.2.0 downloads are signed with Developer ID Application and hardened runtime. **Apple notarization completed on 6 November 2026.** Tickets are stapled to the app and DMG; the ZIP includes the stapled app. The signing and notarization status of each download is stated in its release notes. Keep Gatekeeper enabled; see [Apple’s guidance](https://support.apple.com/102445) if macOS reports a launch restriction.
+The 0.3.0 Apple Silicon downloads are signed with Developer ID Application and hardened runtime, and **notarized by Apple**. Tickets are stapled to the app and DMG; the ZIP contains the stapled app. The signing and notarization status of each download is stated in its release notes. Keep Gatekeeper enabled; see [Apple’s guidance](https://support.apple.com/102445) if macOS reports a launch restriction.
 
 ## Screenshots
 
@@ -58,7 +58,7 @@ Click any screenshot to view it at full size.
 
 ## Languages
 
-Switch languages in **Settings → Language and appearance**, without restarting:
+English is the default on first launch. Switch languages in **Settings → Language and appearance**, without restarting:
 
 - Русский — Russian
 - English
@@ -66,7 +66,7 @@ Switch languages in **Settings → Language and appearance**, without restarting
 - Español — Spanish
 - Deutsch — German
 
-Labels, messages, confirmation dialogs, reports, dates, and units follow the selected language. System-generated macOS menus and window titles may follow the system language.
+Labels, the Settings window title, messages, confirmation dialogs, reports, dates, and units follow the selected language. System-generated macOS menus may follow the system language.
 
 ## Privacy and file operations
 
@@ -87,7 +87,7 @@ Directory-size scans have a time limit; **≥** indicates a partial size. Some p
 - Process CPU percentages come from `ps`; memory is RSS. This is not a complete Activity Monitor replacement.
 - Detailed NVMe SMART requires a separately installed `smartctl` in `/opt/homebrew/bin` or `/usr/local/bin` and permission to read the drive. It is not bundled, installed automatically or run through `sudo`. Missing SMART values remain unavailable.
 - The speed test writes/reads one unique 64–1024 MiB scratch file on the chosen folder’s drive, with file caching disabled, and removes it after completion or cancellation. Results depend on workload and the filesystem.
-- Model release/factory dates, custom widgets, privileged helpers, manual fan control, TRIM changes and automatic updates are not included in 0.2.0.
+- Model release/factory dates, custom widgets, privileged helpers, manual fan control, TRIM changes and automatic updates are not included in 0.3.0.
 - [Sensei comparison checklist (Russian)](docs/SENSEI_CHECKLIST.ru.md) · [Manual review checklist (Russian)](docs/TESTING.ru.md).
 
 ## Build from source

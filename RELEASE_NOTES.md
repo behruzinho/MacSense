@@ -1,33 +1,35 @@
-MacSense 0.2.0 — second public release
+MacSense 0.3.0 — public release
 
 A native macOS system monitor by [behruzinho](https://github.com/behruzinho).
 
-### Что нового
-
-- Расширенная карточка Mac: чип, память, загрузочный диск, macOS/сборка и скрытый серийный номер. Улучшены отступы и размеры тегов.
-- Физические диски и дерево APFS, графики чтения/записи и отменяемый тест скорости.
-- Группы связанных файлов приложений и пакетный выбор. Новые категории очистки, прогресс и отмена сканирования.
-- Настройка панелей мониторинга, их порядка и показателя строки меню.
-- Фактическое состояние launchd, управление разрешением запуска пользовательских агентов с подтверждением и автозапуск самого MacSense.
-- Дополнительные сведения о батарее и Metal. Пять языков: русский, английский, китайский, испанский и немецкий.
-- Новое окно DMG: Retina-фон, крупные значки и понятная установка перетаскиванием. Убрана подпись о неподключённой странице поддержки.
-
-**Updated 6 November 2026:** DMG and ZIP downloads now include Apple notarization tickets. The application executable and version are unchanged; SHA-256 checksums have been updated.
-
 ### Download and install
 
-**macOS 14+ · Apple Silicon (arm64).** Open the DMG, drag MacSense into Applications, then launch it from Applications. A ZIP containing the same app and SHA-256 checksums are also attached. No tested Intel binary is included.
+**[Download MacSense-arm64.dmg](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-arm64.dmg)** · [ZIP](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-0.3.0-arm64.zip) · [SHA-256 checksums](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-0.3.0-arm64-SHA256SUMS.txt)
 
-**Signing:** Developer ID Application: Behruz Numonov (J7PWR289L2), hardened runtime and secure timestamp. **Notarized by Apple.** Both the app and DMG were accepted without issues; notarization tickets are stapled and Gatekeeper accepts the release as `Notarized Developer ID`. The ZIP contains the stapled app.
+**macOS 14+ · Apple Silicon (arm64).** Open **MacSense-arm64.dmg**, drag **MacSense.app** into **Applications**, then launch it from Applications.
+
+An Intel (x86_64) build passed 23 automated tests and a diagnostic launch through Rosetta on Apple Silicon. It is awaiting notarization before being added to the downloads; physical Intel Mac validation is still pending.
+
+The main Apple Silicon DMG keeps the filename **MacSense-arm64.dmg**. A versioned copy of the same DMG, a ZIP containing the stapled app, and checksums are also attached.
 
 ### What changed
 
-Expanded Mac details while preserving the existing dashboard design; physical storage/APFS inspection, live I/O and a cancellable speed test; grouped application removal and categorized cleanup; configurable monitoring panels and menu bar metric; launchd state and user-agent permissions; battery and Metal details; a redesigned drag-to-install DMG.
+- **English on first launch.** New installations start in English. Existing language selections are preserved, and all five app languages remain available in Settings → Language and appearance.
+- **Settings title localization fixed.** The native Settings window title now changes with the app language immediately and stays correct when the window is reopened.
+- **Stable installer filename.** The main download is **MacSense-arm64.dmg**, with SHA-256 checksums for all downloadable packages.
 
-Detailed NVMe SMART uses an optional, separately installed `smartctl` with device-read permission. Unavailable sensor and SMART values remain unavailable. System-service controls, custom TRIM drivers and manual fan control are not included.
+### Что нового
 
-Telemetry stays on your Mac. Files move to Trash only after selection and confirmation; no automatic cleanup runs. Serial numbers are excluded from reports.
+- Английский язык по умолчанию при первом запуске; сохранённый выбор языка учитывается.
+- Заголовок окна настроек переключается вместе с языком интерфейса без перезапуска и остаётся правильным после повторного открытия.
+- Основной установщик для Apple Silicon называется **MacSense-arm64.dmg**. Также доступны ZIP, DMG с номером версии и контрольные суммы SHA-256.
 
-Validation: 22 automated checks, localization coverage, release build, Developer ID signatures, Apple notarization logs, stapled tickets, Gatekeeper assessment, DMG/ZIP integrity and SHA-256 verification. Finder installer layout checked on macOS. User files were not deleted and startup services were not changed during validation.
+### Signing and verification
 
-[Source (v0.2.0)](https://github.com/behruzinho/MacSense/tree/v0.2.0) · [README](https://github.com/behruzinho/MacSense/blob/main/README.md) · [Russian checklist](https://github.com/behruzinho/MacSense/blob/main/docs/TESTING.ru.md) · [MIT license](https://github.com/behruzinho/MacSense/blob/v0.2.0/LICENSE)
+**Signed and notarized by Apple.** Developer ID Application: Behruz Numonov (J7PWR289L2), hardened runtime and secure timestamps. Apple accepted both the arm64 app and DMG; tickets are stapled and validated. Gatekeeper accepts the app and disk image as `Notarized Developer ID`. The ZIP includes the stapled app.
+
+Validation: 23 automated tests on Apple Silicon, all five languages, release build, signatures, Apple tickets, Gatekeeper, DMG integrity, SHA-256 checksums, and matching version/architecture/executable in the app, ZIP and DMG. The default language and live Settings title changes were checked in the UI.
+
+Telemetry stays on your Mac. No automatic cleanup runs; files move to Trash only after selection and confirmation.
+
+[Source (v0.3.0)](https://github.com/behruzinho/MacSense/tree/v0.3.0) · [README](https://github.com/behruzinho/MacSense/blob/main/README.md) · [MIT license](https://github.com/behruzinho/MacSense/blob/v0.3.0/LICENSE)
