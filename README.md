@@ -21,13 +21,15 @@ Created by **[behruzinho](https://github.com/behruzinho)**.
 
 **[Download MacSense 0.3.0 — DMG](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-arm64.dmg)** · [ZIP](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-0.3.0-arm64.zip) · [SHA-256](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-0.3.0-arm64-SHA256SUMS.txt)
 
-Download the DMG for your version from [Releases](https://github.com/behruzinho/MacSense/releases). Open the disk image and drag **MacSense.app** to **Applications**. The Apple Silicon installer is named **MacSense-arm64.dmg**. A ZIP containing the same app and SHA-256 checksums are also provided.
+**Intel:** [MacSense-x86_64.dmg](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-x86_64.dmg) · [ZIP](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-0.3.0-x86_64.zip) · [SHA-256](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-0.3.0-x86_64-SHA256SUMS.txt)
 
-**Requirements:** macOS 14 or newer. The published download is for **Apple Silicon (arm64)**. An Intel (x86_64) build has passed 23 automated tests and a diagnostic launch through Rosetta on Apple Silicon, but is awaiting notarization before being added to the downloads. Physical Intel Mac validation is still pending.
+Download the DMG for your version from [Releases](https://github.com/behruzinho/MacSense/releases). Open the disk image and drag **MacSense.app** to **Applications**. The Apple Silicon installer is named **MacSense-arm64.dmg**; the Intel installer is **MacSense-x86_64.dmg**. A ZIP containing the same app and SHA-256 checksums are also provided.
+
+**Requirements:** macOS 14 or newer. Separate downloads are available for **Apple Silicon (arm64)** and **Intel (x86_64)**. The Intel build passed 23 automated tests and a diagnostic launch through Rosetta on Apple Silicon. Physical Intel Mac validation is still pending.
 
 **[MacSense 0.3.0](https://github.com/behruzinho/MacSense/releases/tag/v0.3.0)** starts in English by default and keeps the Settings window title in sync with the selected app language. Existing language choices are preserved.
 
-The 0.3.0 Apple Silicon downloads are signed with Developer ID Application and hardened runtime, and **notarized by Apple**. Tickets are stapled to the app and DMG; the ZIP contains the stapled app. The signing and notarization status of each download is stated in its release notes. Keep Gatekeeper enabled; see [Apple’s guidance](https://support.apple.com/102445) if macOS reports a launch restriction.
+The 0.3.0 downloads are signed with Developer ID Application and hardened runtime, and **notarized by Apple**. Tickets are stapled to the app and DMG; the ZIP contains the stapled app. The signing and notarization status of each download is stated in its release notes. Keep Gatekeeper enabled; see [Apple’s guidance](https://support.apple.com/102445) if macOS reports a launch restriction.
 
 ## Screenshots
 

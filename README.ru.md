@@ -10,13 +10,15 @@
 
 **[Скачать MacSense 0.3.0 — DMG](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-arm64.dmg)** · [ZIP](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-0.3.0-arm64.zip) · [SHA-256](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-0.3.0-arm64-SHA256SUMS.txt)
 
-1. Скачайте **MacSense-arm64.dmg** для Apple Silicon на странице [Releases](https://github.com/behruzinho/MacSense/releases).
+**Intel:** [MacSense-x86_64.dmg](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-x86_64.dmg) · [ZIP](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-0.3.0-x86_64.zip) · [SHA-256](https://github.com/behruzinho/MacSense/releases/download/v0.3.0/MacSense-0.3.0-x86_64-SHA256SUMS.txt)
+
+1. Скачайте **MacSense-arm64.dmg** для Apple Silicon или **MacSense-x86_64.dmg** для Intel на странице [Releases](https://github.com/behruzinho/MacSense/releases).
 2. Откройте DMG и перетащите **MacSense.app** в **Applications / Программы**.
 3. Запустите приложение из «Программ».
 
-Требуется **macOS 14+**. Опубликованная сборка предназначена для **Apple Silicon (arm64)**. Intel-сборка x86_64 прошла 23 автоматических теста и запуск диагностики через Rosetta на Apple Silicon; перед добавлением в загрузки она ожидает notarization. На настоящем Intel Mac она пока не проверена.
+Требуется **macOS 14+**. Доступны отдельные сборки для **Apple Silicon (arm64)** и **Intel (x86_64)**. Intel-сборка x86_64 прошла 23 автоматических теста и запуск диагностики через Rosetta на Apple Silicon. На настоящем Intel Mac она пока не проверена.
 
-Файлы 0.3.0 для Apple Silicon подписаны Developer ID Application с hardened runtime и **прошли notarization Apple**. Подтверждения прикреплены к приложению и DMG; ZIP содержит приложение с подтверждением. Статус конкретной сборки указан в её релизе. Сохраняйте Gatekeeper включённым. Если macOS ограничивает запуск, ознакомьтесь с [инструкцией Apple](https://support.apple.com/102445).
+Файлы 0.3.0 подписаны Developer ID Application с hardened runtime и **прошли notarization Apple**. Подтверждения прикреплены к приложению и DMG; ZIP содержит приложение с подтверждением. Статус конкретной сборки указан в её релизе. Сохраняйте Gatekeeper включённым. Если macOS ограничивает запуск, ознакомьтесь с [инструкцией Apple](https://support.apple.com/102445).
 
 ## Скриншоты
 
